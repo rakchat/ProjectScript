@@ -1,6 +1,36 @@
-.header-top{
-    transform-style: inherit;
-    position: relative;
-    background-color: black;
-    width: 100%;
-    }
+ *{
+     margin: 0;
+ }
+ .menu-bar{
+    height: 50px;
+    display: block;
+    background-color: #214252;
+    padding-top: 20px;
+}
+.menu-bar a{
+    text-decoration: none;
+    color: white;
+    padding-left: 20px;
+    font-size: 20px;
+}
+.menu-bar a:hover{
+   
+    color: black;
+
+}
+.content{
+    height: 400px;
+    padding-top: 200px;
+    text-align: center;
+    font-size: 30px;
+   
+}
+.footer{
+    color: white;
+    font-size: 16px;
+    padding-top: 30px;
+    padding-left: 50px;
+    padding-bottom: 30px;
+    background-color: #af2d2d;
+}
+
