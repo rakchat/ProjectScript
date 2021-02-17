@@ -2,27 +2,53 @@
      margin: 0;
  }
  .menu-bar{
-    height: 50px;
+    height: 70px;
     display: block;
-    background-color: #214252;
+    background-color: black;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 .menu-bar a{
+    float: right;
     text-decoration: none;
     color: white;
-    padding-left: 20px;
+    padding-right: 20px;
     font-size: 20px;
 }
 .menu-bar a:hover{
-   
-    color: black;
+    color: #FFBE0D;
 
 }
-.content{
-    height: 400px;
-    padding-top: 200px;
+.menu-order{
+    height: 65px;
     text-align: center;
-    font-size: 30px;
+    display: block;
+    background-color: #FFBE0D;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.menu-order a{
+    text-decoration: none;
+    color: black;
+    padding-left: 70px;
+    padding-right: 70px;
+    font-size: 18px;
+}
+.menu-order a:hover{
+    color: white;
+
+}
+.Search-box{
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 40%;
+}
+.content{
+    height: auto;
+    padding-top: 50px;
+    text-align: center;
+
    
 }
 .footer{
@@ -33,4 +59,59 @@
     padding-bottom: 30px;
     background-color: #af2d2d;
 }
+.carousel-inner img {
+    width: 100%;
+    height: 500px;
+  
+  }
+/**********************/
 
+  .column {
+    float: left;
+    width: 25%;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    padding: 0 8px;
+  }
+  .card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  .card button:hover {
+    opacity: 0.7;
+  }
+  
+  
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 50%;
+      display: block;
+      margin-left: 125px;
+    }
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .container {
+    padding: 15px 16px;
+  }
+  
+  .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .title {
+    color: grey;
+  }
