@@ -1,0 +1,88 @@
+body{
+    background-color: black;
+    margin-top: 0px;
+}
+
+.loginall{
+    position: fixed;
+}
+
+.background_login{
+    margin-top: 0px;
+    width: 500px;
+    height: 600px;
+    float: left;
+}
+
+#back1{
+    width: 1500px;
+    height: 1200px;
+    border-radius: 50%;
+    margin-top: -200px;
+    margin-left: -600px;
+    position: fixed;
+}
+
+.login_form{
+    position: fixed;
+    margin-top: 200px;
+    float: right;
+    position: absolute;
+    margin-left: 1000px;
+    background-color: black;
+    width: 500px;
+    text-align: center;
+}
+
+.title{
+    color: white;
+    font-size: 24px;
+}
+
+#loginbutton{
+    margin-top: 5px;
+    background-color: #ffbe0d;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#loginbutton:hover{
+    margin-top: 5px;
+    background-color: #d19900;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+input[type=text]{
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding-right: 100px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    
+}
+
+#link{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: white;
+}
+#link:hover{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: rgb(193, 193, 255)
+}
