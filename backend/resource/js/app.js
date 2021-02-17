@@ -38,6 +38,7 @@ $(document).ready(function(){
             data: {check_select_brand_shoes:check},
             success:function(data){
                 $('#select_input_brand_shoes').html(data)
+               
             }
         });
     });
@@ -97,11 +98,11 @@ $(document).ready(function(){
         var type = $('#select_type_search_shoes').val();
         
         $.ajax({
-            url: "",
+            url: "../config/shoes.php",
             method: "POST",
             data: {check_search_shoes:1 ,key:key, type:type},
             success:function(data){
-
+                $('#view_table_shoes').html(data);
             }
         })
 

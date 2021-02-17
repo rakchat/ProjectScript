@@ -3,7 +3,64 @@
 
   $db = new db();
   $con = $db->connectDB();
-  
+  $output = "";
+
+  // search
+  if(isset($_POST['check_search_shoes'])){
+    $key = $_POST['key'];
+    $type = $_POST['type'];
+    if(empty($key)){
+      $shoes = $db->selectALLJoinTwoTable($con,'shoes','brand_shoes','brand_id','brand_id');
+      $no_shoes = 0;
+      $output = "";
+      $output .= "<table class=\"table table-striped table-hover bg-white\">";
+      $output .= "<tr><th>ลำดับ</th><th>ชื่อแบรนด์</th><th>ชื่อรุ่น</th><th>ไซส์</th><th>สี</th><th></th></tr>";
+      while($item_shoes = mysqli_fetch_array($shoes)) {
+          $no_shoes++;
+          $output .= "<tr>";  
+          $output .= "<td>".$no_shoes."</td>";
+          $output .= "<td>".$item_shoes['brand_name']."</td>";
+          $output .= "<td>".$item_shoes['model']."</td>";
+          $output .= "<td>".$item_shoes['size']."</td>"; 
+          $output .= "<td>".$item_shoes['color']."</td>";
+          $output .= "<td>";
+          $output .= "<button class=\"btn btn-info\" id=\"".$item_shoes['shoes_id']."\">รายละเอียด</button> | ";
+          $output .= "<button class=\"btn btn-warning btn_edit_shoes_success\" data-bs-toggle=\"modal\" data-bs-target=\"#edit_shoes_modal\" id=\"".$item_shoes['shoes_id']."\">แก้ไข</button> | ";
+          $output .= "<button class=\"btn btn-danger btn_delete_shoes_success\" id=\"".$item_shoes['shoes_id']."\">ลบ</button> ";
+          $output .= "</td>";
+          $output .= "</tr>";
+      }
+      $output .= "</table>";
+      echo $output;
+
+    }else{
+
+      $shoes = $db->selectALLJoinTwoTableWhereLikeOneColumn($con,'','','','',$type,$key);
+      $no_shoes = 0;
+      $output = "";
+      $output .= "<table class=\"table table-striped table-hover bg-white\">";
+      $output .= "<tr><th>ลำดับ</th><th>ชื่อแบรนด์</th><th>ชื่อรุ่น</th><th>ไซส์</th><th>สี</th><th></th></tr>";
+      while($item_shoes = mysqli_fetch_array($shoes)) {
+          $no_shoes++;
+          $output .= "<tr>";  
+          $output .= "<td>".$no_shoes."</td>";
+          $output .= "<td>".$item_shoes['brand_name']."</td>";
+          $output .= "<td>".$item_shoes['model']."</td>";
+          $output .= "<td>".$item_shoes['size']."</td>"; 
+          $output .= "<td>".$item_shoes['color']."</td>";
+          $output .= "<td>";
+          $output .= "<button class=\"btn btn-info\" id=\"".$item_shoes['shoes_id']."\">รายละเอียด</button> | ";
+          $output .= "<button class=\"btn btn-warning btn_edit_shoes_success\" data-bs-toggle=\"modal\" data-bs-target=\"#edit_shoes_modal\" id=\"".$item_shoes['shoes_id']."\">แก้ไข</button> | ";
+          $output .= "<button class=\"btn btn-danger btn_delete_shoes_success\" id=\"".$item_shoes['shoes_id']."\">ลบ</button> ";
+          $output .= "</td>";
+          $output .= "</tr>";
+      }
+      $output .= "</table>";
+      echo $output;
+     // echo $type;
+    }
+  }
+
   //insert
   if(isset($_POST['check_insert_shoes_success'])){
     //file 1
@@ -148,7 +205,7 @@
         $output .= "<td>".$item_shoes['size']."</td>"; 
         $output .= "<td>".$item_shoes['color']."</td>";
         $output .= "<td>";
-        $output .= "<button class=\"btn btn-info\" id=\"".$item_shoes['shoes_id']."\">รายละเอียด</button> | ";
+        $output .= "<button class=\"btn btn-info\" id=\"".$item_shoes['shoes_id']."\" data-bs-toggle=\"modal\" data-bs-target=\"#modal_show_details_shoes\">รายละเอียด</button> | ";
         $output .= "<button class=\"btn btn-warning btn_edit_shoes_success\" data-bs-toggle=\"modal\" data-bs-target=\"#edit_shoes_modal\" id=\"".$item_shoes['shoes_id']."\">แก้ไข</button> | ";
         $output .= "<button class=\"btn btn-danger btn_delete_shoes_success\" id=\"".$item_shoes['shoes_id']."\">ลบ</button> ";
         $output .= "</td>";

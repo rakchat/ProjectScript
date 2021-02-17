@@ -101,15 +101,14 @@
                  <div>
                    <button class="btn btn-primary btn_selecte_show_brand_shoes" data-bs-toggle="modal" data-bs-target="#add_shoes_modal">เพิ่มรายการใหม่</button>
                    <div class="container-fluid p-0 m-0">
-                    <form>
+                    <form action="../config/shoes.php" method="POST">
                       <div class="row mt-3">
                         <div class="col-md-2">
                           <select class="form-select" id="select_type_search_shoes">
-                            <option value="0">เลือกรายการค้นหา</option>
-                            <option value="1">ชื่อแบรนด์</option>
-                            <option value="2">ชื่อรุ่น</option>
-                            <option value="3">ไซส์</option>
-                            <option value="4">สี</option>
+                            <option value="brand_shoes.brand_name">ชื่อแบรนด์</option>
+                            <option value="shoes.model">ชื่อรุ่น</option>
+                            <option value="shoes.size">ไซส์</option>
+                            <option value="shoes.price">สี</option>
                           </select>
                         </div>
                         <div class="col-md-4"><input type="text" name="key" class="form-control" placeholder="ระบุคีย์เวิร์ดค้นหา" id="search_shoes"></div>
@@ -138,7 +137,7 @@
                          <td><?php echo $item_shoes['size']; ?></td>
                          <td><?php echo $item_shoes['color']; ?></td>
                          <td>
-                          <button class="btn btn-info" id="<?php echo $item_shoes['shoes_id']; ?>">รายละเอียด</button> | 
+                          <button class="btn btn-info" id="<?php echo $item_shoes['shoes_id']; ?>"  data-bs-toggle="modal" data-bs-target="#modal_show_details_shoes">รายละเอียด</button> | 
                           <button class="btn btn-warning btn_edit_shoes_success" data-bs-toggle="modal" data-bs-target="#edit_shoes_modal" id="<?php echo $item_shoes['shoes_id']; ?>">แก้ไข</button> | 
                           <button class="btn btn-danger btn_delete_shoes_success" id="<?php echo $item_shoes['shoes_id']; ?>">ลบ</button> 
                          </td>
@@ -285,7 +284,7 @@
                              $brand_shoes2 = $db->selectAll($con,'brand_shoes');
                              while($item_shoes2 = mysqli_fetch_array($brand_shoes2)){ 
                             ?>
-                             <option value="<?php echo $item_shoes2['brand_id']; ?>"/><?php echo $item_shoes2['brand_name']; ?>
+                             <option value="<?php echo $item_shoes2['brand_id']; ?>"><?php echo $item_shoes2['brand_name']; ?></option>
                            <?php } ?>
                          </select>
                        </div>
@@ -357,6 +356,24 @@
                <div class="modal-footer">
                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                  <button type="button" class="btn btn-primary" id="">Insert</button>
+               </div>
+             </div>
+           </div>
+        </div>
+
+        <!-- Modal รายลเอียด -->
+        <div class="fade modal" id="modal_show_details_shoes" data-bs-backdrop="static">
+           <div class="modal-dialog">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title">เพิ่มแบรนด์</h5>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+               </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-primary" id="btn_form_insert_brand_shoes">Insert</button>
                </div>
              </div>
            </div>
