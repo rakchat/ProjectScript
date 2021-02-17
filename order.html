@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoes Shop</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css\orderstyles.css" />
+</head>
+      <header class="header-top"> 
+      <!--ชื่อร้านขายรองเท้า-->
+  </header>
+  <div class="menu-bar">
+
+    <a href="#">Login</a> 
+    <a href="#">Register</a> 
+    <a href="#"> Contact </a> 
+</div>
+<body class="orderbody">
+  <div class="menu-order">
+    <a href="#">Adidas</a> 
+    <a href="#">Nike</a> 
+    <a href="#">Vans</a> 
+    <a href="#">Converse</a> 
+</div>
+<h2 class="textheader">My Order</h2>
+
+<div class="order">
+  <table class="tableorder">
+    <tr>
+      <th class="orderno">Order No</th>
+      <th>Name</th>
+      <th>Status</th>
+  </table>
+</div>
+
+<div class="order">
+  <table class="tableorder">
+    <tr>
+      <th class="orderno">Order No</th>
+      <th>Name</th>
+      <th>Status</th>
+  </table>
+</div>
+
+<!--
+<?php
+// connect to the database
+$conn=mysqli_connect("localhost", "root", "","test");
+$conn->query("SET NAMES UTF8");
+// get results from database
+if (isset($_GET["search"])) {
+    $name = $_GET["search"];
+    $sql="SELECT * FROM orders WHERE firstname LIKE '$name'";
+   } else {
+    $sql="SELECT * FROM orders";
+   }   
+$rs=$conn->query($sql);
+?>
+  <h2 class="textheader">My Order</h2>
+
+  <table class="tableorder">
+    <tr>
+      <th class="orderno">Order No</th>
+      <th>Name</th>
+      <th>Status</th>
+    </tr>
+<?php
+while($row = $rs->fetch_assoc()) {
+  // echo out the contents of each row into a table
+ echo "<tr>";
+ echo '<td>' . $row['orders_id'] . '</td>';
+ echo '<td>' . $row['user_id'] . '</td>';
+ echo '<td>' . $row['status'] . '</td>';
+ echo "</tr>";
+ }// close table
+ $conn->close(); // close database connection
+ ?>
+</table>
+-->
+</body>
+    <div class="orderfooter">
+    สมาชิก<br>
+    1. B6122256 นายสุนทร รักชาติ<br>
+    2. นายอิบรอเฮ็ม บูละ<br>
+    3. B6122171 นายธิติพันธุ์ พอควร<br>
+    4. B6121785 นางสาวปนัดดา เบ็ดกระโทก<br>
+    5. B6122898 นายปิยพนธ์ พุ่มหมื่นไวย<br>
+</div>
+</html>
