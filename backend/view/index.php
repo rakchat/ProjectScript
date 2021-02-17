@@ -84,7 +84,6 @@
                            <!--ปุ่มลบ-->
                            <button class="btn btn-danger btn_delete_brand_shoes" id="<?php echo $item_bsh['brand_id']; ?>">ลบ</button>
 
-
                         </td>
                       </tr>
                       <?php } ?>
@@ -108,7 +107,7 @@
                             <option value="brand_shoes.brand_name">ชื่อแบรนด์</option>
                             <option value="shoes.model">ชื่อรุ่น</option>
                             <option value="shoes.size">ไซส์</option>
-                            <option value="shoes.price">สี</option>
+                            <option value="shoes.color">สี</option>
                           </select>
                         </div>
                         <div class="col-md-4"><input type="text" name="key" class="form-control" placeholder="ระบุคีย์เวิร์ดค้นหา" id="search_shoes"></div>
@@ -137,7 +136,7 @@
                          <td><?php echo $item_shoes['size']; ?></td>
                          <td><?php echo $item_shoes['color']; ?></td>
                          <td>
-                          <button class="btn btn-info" id="<?php echo $item_shoes['shoes_id']; ?>"  data-bs-toggle="modal" data-bs-target="#modal_show_details_shoes">รายละเอียด</button> | 
+                          <button class="btn btn-info btn_show_shoes_succes" id="<?php echo $item_shoes['shoes_id']; ?>"  data-bs-toggle="modal" data-bs-target="#modal_show_details_shoes">รายละเอียด</button> | 
                           <button class="btn btn-warning btn_edit_shoes_success" data-bs-toggle="modal" data-bs-target="#edit_shoes_modal" id="<?php echo $item_shoes['shoes_id']; ?>">แก้ไข</button> | 
                           <button class="btn btn-danger btn_delete_shoes_success" id="<?php echo $item_shoes['shoes_id']; ?>">ลบ</button> 
                          </td>
@@ -363,17 +362,53 @@
 
         <!-- Modal รายลเอียด -->
         <div class="fade modal" id="modal_show_details_shoes" data-bs-backdrop="static">
-           <div class="modal-dialog">
+           <div class="modal-dialog modal-lg">
              <div class="modal-content">
                <div class="modal-header">
-                 <h5 class="modal-title">เพิ่มแบรนด์</h5>
+                 <h5 class="modal-title">รายละเอียด</h5>
                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                <div class="modal-body">
+                 <div id="box_view_detials_shoes">
+                   <div>
+                     <table class="table">
+                       <tr>
+                        <th>ชื่อแบรนด์ : <span id="show_shoes_brand"></span> </th>
+                        <th rowspan="3">
+                          <img id="show_shoes_image1" src="" style="width: 150px; height: 120px;">
+                        </th>
+                        <th rowspan="3">
+                          <img id="show_shoes_image2" src="" style="width: 150px; height: 120px;">
+                        </th>
+                       </tr>
+                       <tr>
+                        <th>ชื่อรุ่น : <span id="show_shoes_model"></span></th>
+                       </tr>
+                       <tr>
+                        <th>สี: <span id="show_shoes_color"></span></th>
+                       </tr>
+                       <tr>
+                        <th>ขนาด: <span id="show_shoes_size"></span></th>
+                        <th rowspan="3">
+                          <img id="show_shoes_image3" src="" style="width: 150px; height: 120px;">
+                        </th>
+                        <th rowspan="3">
+                          <img id="show_shoes_image4" src="" style="width: 150px; height: 120px;">
+                        </th>
+                       </tr>
+                       <tr>
+                        <th>จำนวน: <span id="show_shoes_amount"></span></th>
+                       </tr>
+                       <tr>
+                        <th>ราคา: <span id="show_shoes_price"></span></th>
+                       </tr>
+
+                    </table>
+                   </div>
+                 </div>
                </div>
                <div class="modal-footer">
                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                 <button type="button" class="btn btn-primary" id="btn_form_insert_brand_shoes">Insert</button>
                </div>
              </div>
            </div>

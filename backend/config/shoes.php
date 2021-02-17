@@ -24,7 +24,7 @@
           $output .= "<td>".$item_shoes['size']."</td>"; 
           $output .= "<td>".$item_shoes['color']."</td>";
           $output .= "<td>";
-          $output .= "<button class=\"btn btn-info\" id=\"".$item_shoes['shoes_id']."\">รายละเอียด</button> | ";
+          $output .= "<button class=\"btn btn-info btn_show_shoes_succes\" id=\"".$item_shoes['shoes_id']."\" data-bs-toggle=\"modal\" data-bs-target=\"#modal_show_details_shoes\">รายละเอียด</button> | ";
           $output .= "<button class=\"btn btn-warning btn_edit_shoes_success\" data-bs-toggle=\"modal\" data-bs-target=\"#edit_shoes_modal\" id=\"".$item_shoes['shoes_id']."\">แก้ไข</button> | ";
           $output .= "<button class=\"btn btn-danger btn_delete_shoes_success\" id=\"".$item_shoes['shoes_id']."\">ลบ</button> ";
           $output .= "</td>";
@@ -49,7 +49,7 @@
           $output .= "<td>".$item_shoes['size']."</td>"; 
           $output .= "<td>".$item_shoes['color']."</td>";
           $output .= "<td>";
-          $output .= "<button class=\"btn btn-info\" id=\"".$item_shoes['shoes_id']."\">รายละเอียด</button> | ";
+          $output .= "<button class=\"btn btn-info btn_show_shoes_succes\" id=\"".$item_shoes['shoes_id']."\" data-bs-toggle=\"modal\" data-bs-target=\"#modal_show_details_shoes\">รายละเอียด</button> | ";
           $output .= "<button class=\"btn btn-warning btn_edit_shoes_success\" data-bs-toggle=\"modal\" data-bs-target=\"#edit_shoes_modal\" id=\"".$item_shoes['shoes_id']."\">แก้ไข</button> | ";
           $output .= "<button class=\"btn btn-danger btn_delete_shoes_success\" id=\"".$item_shoes['shoes_id']."\">ลบ</button> ";
           $output .= "</td>";
@@ -98,10 +98,10 @@
     $value5 = $_POST['amount'];
     $value6 = $_POST['price'];
     $value7 = 0;
-    $value8 = $destination1;
-    $value9 = $destination2;
-    $value10 = $destination3;
-    $value11 = $destination4;
+    $value8 = $basename1;
+    $value9 = $basename2;
+    $value10 = $basename3;
+    $value11 = $basename4;
     $output = "";  
 
     $query = $db->insertEleventColumn($con,'shoes','brand_id','model','color','size','amount','price','star','image1','image2','image3','image4', $value1, $value2, $value3, $value4, $value5, $value6, $value7, $value8, $value9, $value10, $value11);
@@ -126,7 +126,7 @@
             $output .= "<td>".$item_shoes['size']."</td>"; 
             $output .= "<td>".$item_shoes['color']."</td>";
             $output .= "<td>";
-            $output .= "<button class=\"btn btn-info\" id=\"".$item_shoes['shoes_id']."\">รายละเอียด</button> | ";
+            $output .= "<button class=\"btn btn-info btn_show_shoes_succes\" id=\"".$item_shoes['shoes_id']."\" data-bs-toggle=\"modal\" data-bs-target=\"#modal_show_details_shoes\">รายละเอียด</button> | ";
             $output .= "<button class=\"btn btn-warning btn_edit_shoes_success\" data-bs-toggle=\"modal\" data-bs-target=\"#edit_shoes_modal\" id=\"".$item_shoes['shoes_id']."\">แก้ไข</button> | ";
             $output .= "<button class=\"btn btn-danger btn_delete_shoes_success\" id=\"".$item_shoes['shoes_id']."\">ลบ</button> ";
             $output .= "</td>";
@@ -167,7 +167,7 @@
             $output .= "<td>".$item_shoes['size']."</td>"; 
             $output .= "<td>".$item_shoes['color']."</td>";
             $output .= "<td>";
-            $output .= "<button class=\"btn btn-info\" id=\"".$item_shoes['shoes_id']."\">รายละเอียด</button> | ";
+            $output .= "<button class=\"btn btn-info btn_show_shoes_succes\" id=\"".$item_shoes['shoes_id']."\" data-bs-toggle=\"modal\" data-bs-target=\"#modal_show_details_shoes\">รายละเอียด</button> | ";
             $output .= "<button class=\"btn btn-warning btn_edit_shoes_success\" data-bs-toggle=\"modal\" data-bs-target=\"#edit_shoes_modal\" id=\"".$item_shoes['shoes_id']."\">แก้ไข</button> | ";
             $output .= "<button class=\"btn btn-danger btn_delete_shoes_success\" id=\"".$item_shoes['shoes_id']."\">ลบ</button> ";
             $output .= "</td>";
@@ -205,7 +205,7 @@
         $output .= "<td>".$item_shoes['size']."</td>"; 
         $output .= "<td>".$item_shoes['color']."</td>";
         $output .= "<td>";
-        $output .= "<button class=\"btn btn-info\" id=\"".$item_shoes['shoes_id']."\" data-bs-toggle=\"modal\" data-bs-target=\"#modal_show_details_shoes\">รายละเอียด</button> | ";
+        $output .= "<button class=\"btn btn-info btn_show_shoes_succes\" id=\"".$item_shoes['shoes_id']."\" data-bs-toggle=\"modal\" data-bs-target=\"#modal_show_details_shoes\">รายละเอียด</button> | ";
         $output .= "<button class=\"btn btn-warning btn_edit_shoes_success\" data-bs-toggle=\"modal\" data-bs-target=\"#edit_shoes_modal\" id=\"".$item_shoes['shoes_id']."\">แก้ไข</button> | ";
         $output .= "<button class=\"btn btn-danger btn_delete_shoes_success\" id=\"".$item_shoes['shoes_id']."\">ลบ</button> ";
         $output .= "</td>";

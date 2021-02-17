@@ -108,6 +108,29 @@ $(document).ready(function(){
 
     })
 
+    //show details
+    $(document).on('click','.btn_show_shoes_succes', function(){
+        var id = $(this).attr('id');
+        $.ajax({
+            url: "../config/shoes.php",
+            method: "POST",
+            data: { check_view_data_shoes_success:id },
+            dataType: "json",
+            success:function(data){
+                $('#show_shoes_brand').html(data.brand_name)
+                $('#show_shoes_model').html(data.model)
+                $('#show_shoes_color').html(data.color)
+                $('#show_shoes_size').html(data.size)
+                $('#show_shoes_amount').html(data.amount)
+                $('#show_shoes_price').html(data.price)
+                $('#show_shoes_image1').attr('src', '../resource/uploads/' + data.image1)
+                $('#show_shoes_image2').attr('src', '../resource/uploads/' + data.image2)
+                $('#show_shoes_image3').attr('src', '../resource/uploads/' + data.image3)
+                $('#show_shoes_image4').attr('src', '../resource/uploads/' + data.image4)
+            }
+        })
+    })
+
 // end shoes
 
 
