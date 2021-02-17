@@ -37,7 +37,6 @@
     }
 
     public function selectALLJoinTwoTableWhereLikeOneColumn($con,$table1,$table2,$column1,$column2,$ColumnWhere,$value){
-        //$sql = "SELECT * FROM `$table1` INNER JOIN $table2 ON $table1.$column1 = $table2.$column2 WHERE $ColumnWhere LIKE '%$value%'";
         $sql = "SELECT * FROM `shoes` INNER JOIN brand_shoes ON shoes.brand_id = brand_shoes.brand_id WHERE $ColumnWhere LIKE '%$value%'";
         $query = mysqli_query($con,$sql);
         return $query;
@@ -73,6 +72,12 @@
 
     public function updateTwoColumn($con, $table, $column1, $value1, $column2, $value2, $columnWhere,$valueWhere){
         $sql = "UPDATE `$table` SET `$column1` = '$value1',`$column2` = '$value2' WHERE `$columnWhere` = '$valueWhere'";
+        $query = mysqli_query($con,$sql);
+        return $query;
+    }
+
+    public function updateEleventColumn($con, $table, $column1, $column2, $column3, $column4, $column5, $column6, $column7, $column8, $column9, $column10, $column11, $value1,$value2,$value3, $value4, $value5, $value6, $value7, $value8, $value9, $value10, $value11, $columnWhere, $id){
+        $sql = "UPDATE `$table` SET `$column1` = '$value1', `$column2` = '$value2', `$column3` = '$value3', `$column4` = '$value4', `$column5` = '$value5', `$column6` = '$value6', `$column7` = '$value7', `$column8` = '$value8', `$column9` = '$value9', `$column10` = '$value10', `$column11` = '$value11' WHERE `$columnWhere` = '$id';";
         $query = mysqli_query($con,$sql);
         return $query;
     }

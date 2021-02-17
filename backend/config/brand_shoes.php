@@ -4,6 +4,31 @@
 
   $db = new db();
   $con = $db->connectDB();
+  $output = "";
+
+  // show details
+  if(isset($_POST['check_show_details_brand_shoes'])){
+    $id = $_POST['check_show_details_brand_shoes'];
+    $query = $db->selectALLJoinTwoTableWhereOneColumn($con,'shoes','brand_shoes','brand_id','brand_id','shoes.brand_id',$id);
+    $no = 0;
+    $output .= "<table class=\"table table-striped table-hover\">";
+    $output .= "<tr>";
+    $output .= "<th>ลำดับ</th>";
+    $output .= "<th>ชื่อรุ่น</th>";
+    $output .= "<th>จำนวน</th>";
+    $output .= "</tr>";
+    while($item = mysqli_fetch_array($query)){
+      $no++;
+      $output .= "<tr>";
+      $output .= "<td>".$no."</td>";
+      $output .= "<td>".$item['model']."</td>";
+      $output .= "<td>".$item['amount']."</td>";
+      $output .= "</tr>";
+    }
+    
+    $output .= "</table>";
+    echo $output;
+  }
 
   // start insert brand shoes 
   if(isset($_POST['check_insert_brand_shoes_success'])){

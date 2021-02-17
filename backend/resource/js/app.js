@@ -5,6 +5,32 @@
 $(document).ready(function(){
 
 // start shoes
+
+
+    // edit shoes
+    $('#form_edit_shoes').on('submit', function(event){
+        event.preventDefault();
+        var formData = new FormData($(this)[0]);
+        $.ajax({
+            url: "../config/shoes.php",
+            data: formData,
+            contentType: false,
+            processData: false,
+            cache: false,
+            type: 'POST',
+            success:function(data){
+                $('#view_table_shoes').html(data);
+                $('#edit_shoes_modal').modal('hide');
+                $('#form_edit_shoes')[0].reset();
+            }
+        });
+    })
+
+    //submit edit form
+    $('#btn_submit_form_edit_shoes').click(function(){
+        $('#form_edit_shoes').submit();
+    })
+    
     
     //insert shoes
     $('#btn_insert_shoes').click(function(){
@@ -58,6 +84,11 @@ $(document).ready(function(){
                 $('#set_data_size').val(data.size);
                 $('#set_data_amount').val(data.amount);
                 $('#set_data_price_shoes').val(data.price);
+                $('#set_update_shoes_id').val(data.shoes_id)
+                $('#set_value_shoes_image1').val(data.image1)
+                $('#set_value_shoes_image2').val(data.image2)
+                $('#set_value_shoes_image3').val(data.image3)
+                $('#set_value_shoes_image4').val(data.image4)
             }
         });
     });
@@ -135,6 +166,20 @@ $(document).ready(function(){
 
 
 // start brand shoes
+
+
+   // show detail
+   $(document).on('click','.btn_show_details_brand_shoes',function(){
+       var id = $(this).attr('id');
+       $.ajax({
+        url: "../config/brand_shoes.php",
+        method: "POST",
+        data: { check_show_details_brand_shoes:id },
+        success:function(data){
+            $('#box_details_brand_shoes').html(data)
+        }
+       })
+   });
 
    // insert brand shoes
     $('#btn_form_insert_brand_shoes').click(function(){

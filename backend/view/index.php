@@ -76,7 +76,7 @@
                         <td><img src="../resource/uploads/<?php echo $item_bsh['logo']; ?>" style="width: 90px; height: 80px;"></td>
                         <td>
                            <!--ปุ่มรายละเอียด-->
-                           <button class="btn btn-info btn_show_details_brand_shoes" id="<?php echo $item_bsh['brand_id']; ?>">รายละเอียด</button>  &nbsp; | &nbsp;
+                           <button class="btn btn-info btn_show_details_brand_shoes" id="<?php echo $item_bsh['brand_id']; ?>" data-bs-toggle="modal" data-bs-target="#details_brand_shoes_modal">รายละเอียด</button>  &nbsp; | &nbsp;
 
                            <!--ปุ่มแก้ไข-->
                            <button class="btn btn-warning btn_view_brand_shoes" id="<?php echo $item_bsh['brand_id']; ?>" data-bs-toggle="modal" data-bs-target="#edit_brand_shoes_modal">แก้ไข</button> &nbsp; | &nbsp;
@@ -273,6 +273,12 @@
                <div class="modal-body">
                  <div>
                    <form id="form_edit_shoes" action="../config/shoes.php" method="POST" enctype="multipart/form-data">
+                     <input type="hidden" name="check_edit_shoes_success" value="1">
+                     <input type="hidden" id="set_update_shoes_id" name="shoes_id">
+                     <input type="hidden" id="set_value_shoes_image1" name="name_image1">
+                     <input type="hidden" id="set_value_shoes_image2" name="name_image2">
+                     <input type="hidden" id="set_value_shoes_image3" name="name_image3">
+                     <input type="hidden" id="set_value_shoes_image4" name="name_image4">
                      
                      <div class="row">
 
@@ -354,7 +360,7 @@
                </div>
                <div class="modal-footer">
                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                 <button type="button" class="btn btn-primary" id="">Insert</button>
+                 <button type="button" class="btn btn-primary" id="btn_submit_form_edit_shoes">Update</button>
                </div>
              </div>
            </div>
@@ -493,6 +499,27 @@
              </div>
            </div>
         </div>
+
+                <!-- Modal รายละเอียด -->
+
+          <div class="fade modal" id="details_brand_shoes_modal" data-bs-backdrop="static">
+           <div class="modal-dialog modal-lg">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title">รายละเอียด</h5>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                <div id="box_details_brand_shoes">
+                </div>
+               </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+               </div>
+             </div>
+           </div>
+        </div>
+
 
        <!-- จบ brand shoes -->
 
