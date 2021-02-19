@@ -59,6 +59,14 @@
 
    
 }
+.textcontact{
+  padding-left: 100px;
+}
+.content-contact{
+  height: 500px;
+  padding-top: 50px;
+ 
+}
 .price-order{
   padding-top: 50px;
   padding-left: 220px;
@@ -78,7 +86,7 @@
     padding-top: 30px;
     padding-left: 50px;
     padding-bottom: 30px;
-    background-color: #af2d2d;
+    background-color: black;
 }
 .btn {
   background-color: #ECEDEF;
