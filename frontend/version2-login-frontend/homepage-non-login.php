@@ -10,17 +10,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css\styles.css" />
+    <link rel="stylesheet" href="css\styles1.css" />
 </head>
       <header class="header-top"> 
       <!--ชื่อร้านขายรองเท้า-->
   </header>
   <div class="menu-bar">
-
-    <a href="#">Login</a> 
-    <a href="#">Register</a> 
-    <a href="#"> Contact </a> 
-</div>
+      <div class="background">
+        <a href="form_login.php">Login</a> 
+        <a href="#">|</a> 
+        <a href="register.php">Register</a> 
+        <a href="#">|</a> 
+        <a href="#"> Contact </a> 
+        <a href="#">|</a>
+        <a href="homepage-non-login.php">Home</a> 
+      </div>
+  </div>
 <body>
     <div class="header">
         <div id="demo" class="carousel slide" data-ride="carousel">
