@@ -14,18 +14,21 @@ include("connection.php");
 </head>
 
 <body>
-
     <div class="menu-bar">
-        <a href="#">Login</a>
-        <a href="#">Register</a>
+        <a href="form_login.php">Login</a>
+        <a href="register.php">Register</a>
         <a href="#"> Contact </a>
+        <div class="dropdown">
+            Brand
+            <div class="dropdown-content">
+                <a href="#">Adidas</a><br>
+                <a href="#">Nike</a><br>
+                <a href="#">Vans</a><br>
+                <a href="#">Converse</a><br>
+            </div>
+        </div>
     </div>
-    <div class="menu-order">
-        <a href="#">Adidas</a>
-        <a href="#">Nike</a>
-        <a href="#">Vans</a>
-        <a href="#">Converse</a>
-    </div>
+
     <div class="background_login">
         <img src="img/back5.jpg" id="back1">
     </div>
