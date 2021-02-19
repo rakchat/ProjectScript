@@ -12,8 +12,12 @@
   $shoes = $db->selectALLJoinTwoTable($con,'shoes','brand_shoes','brand_id','brand_id');
   // end shoes
 
-  $users = $db->selectAll($con,'user');
+  //user
+  $users = $db->selectAll($con,'users');
   $user_no = 0;
+
+  // banner 
+  $banner = $db->selectAll($con,'banner');
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +56,32 @@
          
              <div class="tab-content" id="nav-tabContent">
                
-               <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
+               <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                 <div>
+                   <div>
+                     <center>
+                     <div class="card w-50">
+                       <div class="card-header">คำวนวณรายได้</div>
+                       <div class="card-body">
+                         <form>
+                           <div class="row">
+                             <label style="text-align:left;">เริ่ม</label>
+                             <div class="col-md-11"><input type="date" name="from" class="form-control" id="cal_from"></div>
+                             <br>
+                             <br>
+                             <label  style="text-align:left;">ถึง</label>
+                             <div class="col-md-11"><input type="date" name="to" class="form-control " id="cal_to"></div>
+                             <br>
+                             <br>
+                           </div>
+                         </form>
+                         <button class="btn btn-success" id="btn_cal_income">คำนวณ</button>
+                       </div>
+                     </div>
+                     </center>
+                   </div>
+                 </div>
+               </div>
 
                <div class="tab-pane fade" id="list-orders" role="tabpanel" aria-labelledby="list-orders-list">
                  <div>
@@ -62,7 +91,7 @@
                         <div class="col-md-2">
                           <select class="form-select" id="select_type_search_order">
                             <option value="orders.date">วันที่สั่งซื้อ</option>
-                            <option value="user.email">ผู้สั่งซื้อ</option>
+                            <option value="users.email">ผู้สั่งซื้อ</option>
                           </select>
                         </div>
                         <div class="col-md-4"><input type="text" name="key" class="form-control" placeholder="ระบุคีย์เวิร์ดค้นหา" id="search_order"></div>
@@ -80,7 +109,7 @@
                          <th></th>
                        </tr>
                        <?php 
-                         $orderQuery = $db->selectALLJoinTwoTable($con,'orders','user','user_id','user_id');
+                         $orderQuery = $db->selectALLJoinTwoTable($con,'orders','users','user_id','user_id');
                          foreach($orderQuery as $item){
                        ?>
                        <tr>
@@ -195,8 +224,41 @@
                  </div>
                </div>
                <!-- สิ้นสุดส่วน shoes -->
+
+               <!-- ส่วน Banner -->
                
-               <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+               <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                 <div>
+                   <div class="row" id="box_view_banner">
+                     <?php 
+                      foreach ($banner as $item) {
+                     ?>
+
+                     <div class="col-md-10 m-3">
+                       <div class="card">
+                        <img src="<?php echo "../resource/uploads/".$item['image'];?>" class="card-img-top" alt="..." style="with:100%; height: 300px;">
+                        <div class="card-body">
+                          <form id="form_update_banner" action="../config/banner.php" method="POST" enctype="multipart/form-data">
+                            <p class="card-title">เปลี่ยนรูปภาพ</p>
+                            <input type="hidden" name="check_banner_update_image" value="<?php echo $item['image']; ?>">
+                            <input type="hidden" name="edit_id" value="<?php echo $item['banner_id']; ?>">
+                            <input type="file" name="image">
+                            <hr>
+                            <input type="submit" value="บันทึก" class="btn btn-primary">
+                          </form>
+                        </div>
+                       </div>
+                     </div>
+
+                     <?php
+                      }
+                     ?>
+                   </div>
+                 </div>
+                 
+               </div>
+
+               <!-- สิ้นสุดส่วนของ Banner  -->
 
 
                <!-- ส่วนของผู้ใข้งาน -->
@@ -262,6 +324,26 @@
      </div>
 
      <!-- เริ่มส่วน Modal -->
+       
+       <!-- start calulate income -->
+       <div class="modal fade" id="moda_show_cal_income" data-bs-backdrop="static">
+           <div class="modal-dialog modal-lg">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title">ยอดรายได้</h5>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                 <div id="box_show_cal_income"></div>
+               </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+               </div>
+             </div>
+           </div>
+         </div>
+
+       <!-- end calulate income -->
        
        <!-- start modal users -->
          <!-- รายละเอียด -->

@@ -7,7 +7,7 @@
     if(isset($_POST['check_order_search'])){
         $id = $_POST['key'];
         $type = $_POST['type'];
-        $query = $db->selectALLJoinTwoTableWhereLikeOneColumn($con,'orders','user','user_id','user_id',$type,$id);
+        $query = $db->selectALLJoinTwoTableWhereLikeOneColumn($con,'orders','users','user_id','user_id',$type,$id);
 
         if($query){
 
@@ -50,7 +50,7 @@
         $value = $_POST['status'];
         $query = $db->query($con, "UPDATE `orders` SET `order_status` = '$value' WHERE `orders`.`orders_id` = $id");
         if($query){
-            $orderQuery = $db->selectALLJoinTwoTable($con,'orders','user','user_id','user_id');
+            $orderQuery = $db->selectALLJoinTwoTable($con,'orders','users','user_id','user_id');
 
             $output .= "<table class=\"table table-striped table-hover bg-white \">";
             $output .= "<tr>";
@@ -126,7 +126,7 @@
 
     if(isset($_POST['check_order_user_order_details'])){
         $id = $_POST['check_order_user_order_details'];
-        $query = $db->selectALLJoinTwoTableWhereOneColumn($con,'orders','user','user_id','user_id','user.user_id',$id);
+        $query = $db->selectALLJoinTwoTableWhereOneColumn($con,'orders','users','user_id','user_id','users.user_id',$id);
         if($query){
             $user = mysqli_fetch_array($query);
 

@@ -8,7 +8,7 @@
           $key = $_POST['key'];
           $type = $_POST['type'];
           $user_no = 0;
-          $query = $db->selectWhereLikeByOneColumn($con,'user',$type,$key);
+          $query = $db->selectWhereLikeByOneColumn($con,'users',$type,$key);
 
           if($query){
               $output .= "<table class=\"table table-striped table-hover bg-white\">";
@@ -44,7 +44,7 @@
 
       if(isset($_POST['check_show_users_details_users'])){
           $id = $_POST['check_show_users_details_users'];
-          $query = $db->selectWhereByOneColumn($con,'user','user_id',$id);
+          $query = $db->selectWhereByOneColumn($con,'users','user_id',$id);
 
           if($query){
             $output .= "<div class=\"row\">";

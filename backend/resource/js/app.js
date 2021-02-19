@@ -4,6 +4,48 @@
 
 $(document).ready(function(){
 
+// start calculate 
+
+$('#btn_cal_income').click(function(){
+    var from = $('#cal_from').val();
+    var to = $('#cal_to').val();
+
+    if(from > to){
+        alert("ข้อมูลไม่ถูกต้อง!")
+    }else{
+        $.ajax({
+            url: "../config/income.php",
+            method: "POST",
+            data: { check_cal_income:1, from:from, to:to },
+            success:function(data){
+                $('#moda_show_cal_income').modal('show');
+                $('#box_show_cal_income').html(data);
+            }
+        })
+    }
+})
+
+// end calculate
+
+// start banner
+
+  $(document).on('submit', '#form_update_banner',function(event){
+      event.preventDefault();
+      var formData = new FormData($(this)[0]);
+      $.ajax({
+          url: "../config/banner.php",
+          data: formData,
+          contentType: false,
+          processData: false,
+          cache: false,
+          type: 'POST',
+          success:function(data){
+             $('#box_view_banner').html(data);
+          }
+      });
+  })
+
+// end banner
 
 // start users
 
