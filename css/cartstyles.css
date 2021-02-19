@@ -83,26 +83,6 @@ img{
    height: 20px;
 }
 
-.btn{
-   font-weight: bold;
-   font-size: 16px;
-   display: inline-block;
-   padding: 20px 30px;
-   -webkit-appearance: none;
-   appearance: none;
-   border-radius: 4px;
-   border: none;
-   cursor: pointer;
-   position: relative;
-   transition: transform 0.5s, box-shadow ease-in 0.25s;
-   box-shadow: 2px #FFBE0D;
-   background-color: black;   
-   color: rgb(255, 255, 255);
- }
- .btn:hover{
-   background-color: #FFBE0D;   
-   color: rgb(0, 0, 0);
-   }
 .totaltext{
    padding-left: 80%;
    }
