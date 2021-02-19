@@ -1,62 +1,62 @@
-<?php 
+<?php
 
-    session_start();
+session_start();
 
-    require_once "connection.php";
+require_once "connection.php";
 
-    if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
 
-        $firstname = $_POST['fname'];
-        $lastname = $_POST['lname'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $image = $_POST['image'];
-        $phone = $_POST['phone'];
-        $address = $_POST['address'];
-        $status = $_POST['status'];
+    $firstname = $_POST['fname'];
+    $lastname = $_POST['lname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $image = $_POST['image'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
+    $status = $_POST['status'];
 
 
-        $user_check = "SELECT * FROM users WHERE email = '$email' LIMIT 1";
-        $result = mysqli_query($conn, $user_check);
-        $user = mysqli_fetch_assoc($result);
+    $user_check = "SELECT * FROM users WHERE email = '$email' LIMIT 1";
+    $result = mysqli_query($conn, $user_check);
+    $user = mysqli_fetch_assoc($result);
 
-        if ($user['email'] === $email) { //check email 
-            echo "<script>alert('Username already exists');</script>";
-            $_SESSION['error'] = "This E-mail is already registered.";
-                header("Location: register.php");
-        } else {
-            $passwordenc = md5($password);
+    if ($user['email'] === $email) { //check email 
+        echo "<script>alert('Username already exists');</script>";
+        $_SESSION['error'] = "This E-mail is already registered.";
+        header("Location: register.php");
+    } else {
+        $passwordenc = md5($password);
 
-            //file
-            $filename = uniqid() . "-" . time(); 
-            $extension = pathinfo( $_FILES["image"]["name"], PATHINFO_EXTENSION ); 
-            $basename = $filename . "." . $extension; 
-            $source = $_FILES["image"]["tmp_name"];
-            $destination  = "./photos/{$basename}";
-            //
-            //file
-            move_uploaded_file( $source, $destination );
-            //
-            
-            $query = "INSERT INTO users (fname, lname, email, password, image, phone, address, status)
+        //file
+        $filename = uniqid() . "-" . time();
+        $extension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+        $basename = $filename . "." . $extension;
+        $source = $_FILES["image"]["tmp_name"];
+        $destination  = "./photos/{$basename}";
+        //
+        //file
+        move_uploaded_file($source, $destination);
+        //
+
+        $query = "INSERT INTO users (fname, lname, email, password, image, phone, address, status)
                         VALUE ('$firstname', '$lastname', '$email', '$passwordenc', '$basename', '$phone', '$address', 'user')";
-            $result = mysqli_query($conn, $query);
-            
-            if ($result) {
-                $_SESSION['success'] = "Register completed successfully";
-                header("Location: form_login.php");
-            } 
-            // else {
-            //     $_SESSION['error'] = "Something went wrong";
-            //     header("Location: index.php");
-            // }
-        }
+        $result = mysqli_query($conn, $query);
 
+        if ($result) {
+            $_SESSION['success'] = "Register completed successfully";
+            header("Location: form_login.php");
+        }
+        // else {
+        //     $_SESSION['error'] = "Something went wrong";
+        //     header("Location: index.php");
+        // }
     }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,36 +71,35 @@
     <!--ชื่อร้านขายรองเท้า-->
 </header>
 <div class="menu-bar">
-
     <a href="form_login.php">Login</a>
     <a href="register.php">Register</a>
     <a href="#"> Contact </a>
+    <div class="dropdown">
+        Brand
+        <div class="dropdown-content">
+            <a href="#">Adidas</a><br>
+            <a href="#">Nike</a><br>
+            <a href="#">Vans</a><br>
+            <a href="#">Converse</a><br>
+        </div>
+    </div>
 </div>
 
 <body>
-
-
-
-    <div class="menu-order">
-        <a href="#">Adidas</a>
-        <a href="#">Nike</a>
-        <a href="#">Vans</a>
-        <a href="#">Converse</a>
-    </div>
 
     <div class="container t">
         <div class="row justify-content-center m-3">
             <form method="post" enctype="multipart/form-data">
 
-            <div class="col">
+                <div class="col">
                     <?php if (isset($_SESSION['error'])) : ?>
                         <div class="error">
-                            <?php 
-                                echo $_SESSION['error'];
+                            <?php
+                            echo $_SESSION['error'];
                             ?>
                         </div>
                     <?php endif; ?>
-            </div>
+                </div>
 
                 <img src="img/user.png" style="width: 200px; height: 200px; margin-left: 50px; border-radius: 50%;">
                 <br><br>
@@ -118,7 +117,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">Address</label>
-                    <textarea  class="form-control" rows="4" cols="1" name="address" id="address" placeholder="Enter your Address"></textarea>
+                    <textarea class="form-control" rows="4" cols="1" name="address" id="address" placeholder="Enter your Address"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Images</label> <input type="file" class="form-control" name="image" id="image">
@@ -134,9 +133,9 @@
                 </div>
 
                 <div class="row justify-content-center">
-                        <div class="col-4">
-                            <button type ="submit" id="submit" name="submit" class="btn btn-success">Register</button>
-                        </div>
+                    <div class="col-4">
+                        <button type="submit" id="submit" name="submit" class="btn btn-success">Register</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -145,30 +144,42 @@
     <form method="post">
         <div class="container">
             <div class="row justify-content-center">
-                        <div class="col-1 m-1">
-                            <button type ="submit" id="back" name="back" class="btn btn-warning">Back</button>
-                        </div>
+                <div class="col-1 m-1">
+                    <button type="submit" id="back" name="back" class="btn btn-warning">Back</button>
                 </div>
+            </div>
         </div>
     </form>
 
     <body>
-        <div class="footer">
-            สมาชิก<br>
-            1. B6122256 นายสุนทร รักชาติ<br>
-            2. B6122553 นายอิบรอเฮ็ม บูละ<br>
-            3. B6122171 นายธิติพันธุ์ พอควร<br>
-            4. B6121785 นางสาวปนัดดา เบ็ดกระโทก<br>
-            5. B6122898 นายปิยพนธ์ พุ่มหมื่นไวย<br>
-        </div>
+        <div class="cartfooter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-8">
+                        <h3>สมาชิก </h3><br>
+                        1. B6122256 นายสุนทร รักชาติ<br>
+                        2. นายอิบรอเฮ็ม บูละ<br>
+                        3. B6122171 นายธิติพันธุ์ พอควร<br>
+                        4. B6121785 นางสาวปนัดดา เบ็ดกระโทก<br>
+                        5. B6122898 นายปิยพนธ์ พุ่มหมื่นไวย<br>
+                    </div>
+                    <div class="col-">
+                        <h3>Contact </h3> <br>
+                        E-mail: sixshoes@shop.com<br>
+                        Phone: +66 826-5328<br>
+                        Facebook: Sixshoes<br>
+                        Development by Sixshoes@2021<br>
+                        <br>
+                    </div>
+                </div>
 
     </body>
 
 </html>
 
-<?php 
-        if (isset($_POST['back'])) {
-            session_destroy();
-            echo "<script>window.location.href='form_login.php'</script>";
-        }
+<?php
+if (isset($_POST['back'])) {
+    session_destroy();
+    echo "<script>window.location.href='form_login.php'</script>";
+}
 ?>
