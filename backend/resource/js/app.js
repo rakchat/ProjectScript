@@ -4,9 +4,116 @@
 
 $(document).ready(function(){
 
+
+// start users
+
+// search users
+$('#search_users').keyup(function(event){
+    event.preventDefault()
+    var key = $('#search_users').val();
+    var type = $('#select_type_search_users').val();
+    $.ajax({
+        url: "../config/users.php",
+        method: "POST",
+        data: { check_seach_users:1, key:key, type:type },
+        success:function(data){
+            $('#box_view_all_users').html(data)
+        }
+    })
+})
+
+// show details users
+$(document).on('click','.btn_users_show_details_users', function(){
+    var id = $(this).attr('id');
+    $.ajax({
+        url: "../config/users.php",
+        method: "POST",
+        data: { check_show_users_details_users: id},
+        success:function(data){
+            $('#box_users_show_details_users').html(data)
+        }
+    })
+})
+
+// end users
+
+
+//  start order
+
+// order search
+
+$('#search_order').keyup(function(event){
+    event.preventDefault();
+    var key = $('#search_order').val();
+    var type = $('#select_type_search_order').val();
+    $.ajax({
+        url: "../config/order.php",
+        method: "POST",
+        data: { check_order_search:1, key:key, type:type },
+        success:function(data){
+            $('#box_view_order').html(data);
+        }
+    })
+})
+
+// oder show order details 
+$(document).on('click', '.btn_order_show_orders_details', function(){
+    var id = $(this).attr('id')
+    
+    $.ajax({
+        url: "../config/order.php",
+        method: "POST",
+        data: { check_order_show_order_details:id },
+        success:function(data){
+            $('#box_view_orders_order_details').html(data);
+        }
+    })
+
+})
+
+//  orders show user details
+$(document).on('click', '.btn_order_show_user_details', function(){
+    var id = $(this).attr('id')
+
+    $.ajax({
+        url: "../config/order.php",
+        method: "POST",
+        data: { check_order_user_order_details:id },
+        success:function(data){
+            $('#box_orders_show_user').html(data)
+        }
+    })
+})
+
+// orders update status order
+
+$('#form_order_update_status_order').on('submit', function(event){
+    event.preventDefault()
+
+    $.ajax({
+        url: "../config/order.php",
+        method: "POST",
+        data: $(this).serialize(),
+        success:function(data){
+            $('#box_view_order').html(data);
+            $('#order_modal_update_status').modal('hide');
+            $('#form_order_update_status_order')[0].reset();
+        }
+    })
+
+})
+
+$(document).on('click', '.btn_order_show_update_status_order', function(){
+    var id = $(this).attr('id')
+    $('#set_edit_order_id').val(id);
+})
+
+
+// end order
+
+
 // start shoes
-
-
+ 
     // edit shoes
     $('#form_edit_shoes').on('submit', function(event){
         event.preventDefault();

@@ -1,11 +1,18 @@
 <?php
   
   class db {
-    
+     
     // Method Connect Mysql
     public function connectDB(){
         $con = mysqli_connect("localhost","root","","dbscript");
         return $con;
+    }
+
+    //
+
+    public function query($con,$sql){
+        $query = mysqli_query($con, $sql);
+        return $query;
     }
 
     // Method for SQL SELECT
@@ -17,7 +24,13 @@
     } 
 
     public function selectWhereByOneColumn($con,$table,$column,$value){
-        $sql = "SELECT * FROM $table WHERE $column = $value";
+        $sql = "SELECT * FROM $table WHERE $column = '$value'";
+        $query = mysqli_query($con,$sql);
+        return $query;
+    }
+
+    public function selectWhereLikeByOneColumn($con,$table,$column,$value){
+        $sql = "SELECT * FROM $table WHERE $column LIKE '%$value%'";
         $query = mysqli_query($con,$sql);
         return $query;
     }
@@ -37,7 +50,7 @@
     }
 
     public function selectALLJoinTwoTableWhereLikeOneColumn($con,$table1,$table2,$column1,$column2,$ColumnWhere,$value){
-        $sql = "SELECT * FROM `shoes` INNER JOIN brand_shoes ON shoes.brand_id = brand_shoes.brand_id WHERE $ColumnWhere LIKE '%$value%'";
+        $sql = "SELECT * FROM $table1 INNER JOIN $table2 ON `$table1`.`$column1` = `$table2`.$column2 WHERE $ColumnWhere LIKE '%$value%'";
         $query = mysqli_query($con,$sql);
         return $query;
     }

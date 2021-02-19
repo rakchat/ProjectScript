@@ -11,6 +11,9 @@
   // startbrand
   $shoes = $db->selectALLJoinTwoTable($con,'shoes','brand_shoes','brand_id','brand_id');
   // end shoes
+
+  $users = $db->selectAll($con,'user');
+  $user_no = 0;
 ?>
 
 <!DOCTYPE html>
@@ -39,8 +42,7 @@
              <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="profile">แบรนด์</a>
              <a class="list-group-item list-group-item-action btn_refesh_shoes_success" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="messages">รองเท้า</a>
              <a class="list-group-item list-group-item-action" id="list-customers-list" data-bs-toggle="list" href="#list-customers" role="tab" aria-controls="customers">ผู้ใช้งาน</a>
-             <a class="list-group-item list-group-item-action" id="list-payment-list" data-bs-toggle="list" href="#list-payment" role="tab" aria-controls="payment">การชำระเงิน</a>
-             <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+             <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="settings">ตั้งค่า</a>
              <a class="list-group-item list-group-item-action" id="list-index-list" data-bs-toggle="list" href="#list-index" role="tab" aria-controls="index">ออกจากระบบ</a>
            </div>
          </div>
@@ -52,7 +54,53 @@
                
                <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
 
-               <div class="tab-pane fade" id="list-orders" role="tabpanel" aria-labelledby="list-orders-list">...</div>
+               <div class="tab-pane fade" id="list-orders" role="tabpanel" aria-labelledby="list-orders-list">
+                 <div>
+                  <div class="container-fluid p-0 m-0">
+                    <form action="../config/order.php" method="POST">
+                      <div class="row mt-3">
+                        <div class="col-md-2">
+                          <select class="form-select" id="select_type_search_order">
+                            <option value="orders.date">วันที่สั่งซื้อ</option>
+                            <option value="user.email">ผู้สั่งซื้อ</option>
+                          </select>
+                        </div>
+                        <div class="col-md-4"><input type="text" name="key" class="form-control" placeholder="ระบุคีย์เวิร์ดค้นหา" id="search_order"></div>
+                      </div>
+                    </form>
+                   </div>
+                   <hr class="bg-white">
+                   <div id="box_view_order">
+                     <table class="table table-striped table-hover bg-white ">
+                       <tr>
+                         <th>วันที่สั่งซื้อ</th>
+                         <th>ผู้สั่งซื้อ</th>
+                         <th>ยอดชำระเงิน</th>
+                         <th>สถานะ</th>
+                         <th></th>
+                       </tr>
+                       <?php 
+                         $orderQuery = $db->selectALLJoinTwoTable($con,'orders','user','user_id','user_id');
+                         foreach($orderQuery as $item){
+                       ?>
+                       <tr>
+                         <td><?php echo $item['date'];?></td>
+                         <td><?php echo $item['email']; ?></td>
+                         <td><?php echo $item['order_total_price'];?></td>
+                         <td><?php echo $item['order_status'];?></td>
+                         <td>
+                           <button class="btn btn-info btn_order_show_orders_details" data-bs-toggle="modal" data-bs-target="#order_modal_order_details" id="<?php echo $item['orders_id']; ?>">รายละเอียดสั่งซื้อ</button>
+                           <button class="btn btn-warning btn_order_show_user_details" data-bs-toggle="modal" data-bs-target="#order_modal_user_details" id="<?php echo $item['orders_id']; ?>">ข้อมูลลูกค้า</button>
+                           <button class="btn btn-success btn_order_show_update_status_order" data-bs-toggle="modal" data-bs-target="#order_modal_update_status" id="<?php echo $item['orders_id']; ?>">อัพเดทสถานะ</button>
+                         </td>
+                       </tr>
+                       <?php
+                         }
+                       ?>
+                     </table>
+                   </div>
+                 </div>
+               </div>
                
                <!-- เริ่มส่วนของ brand -->
                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
@@ -149,10 +197,59 @@
                <!-- สิ้นสุดส่วน shoes -->
                
                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
-               
-               <div class="tab-pane fade" id="list-customers" role="tabpanel" aria-labelledby="list-customers-list">...</div>
 
-               <div class="tab-pane fade" id="list-payment" role="tabpanel" aria-labelledby="list-payment-list"></div>
+
+               <!-- ส่วนของผู้ใข้งาน -->
+               
+               <div class="tab-pane fade" id="list-customers" role="tabpanel" aria-labelledby="list-customers-list">
+                 
+                 <div>
+                  <a hef="#" class="btn btn-primary">เพิ่มผู้ใช้งาน</a>
+                  <div class="container-fluid p-0 m-0">
+                    <form action="../config/order.php" method="POST">
+                      <div class="row mt-3">
+                        <div class="col-md-2">
+                          <select class="form-select" id="select_type_search_users">
+                            <option value="fname">ชื่อ</option>
+                            <option value="lname">นามสกุล</option>
+                            <option value="email">อีเมล</option>
+                          </select>
+                        </div>
+                        <div class="col-md-4"><input type="text" name="key" class="form-control" placeholder="ระบุคีย์เวิร์ดค้นหา" id="search_users"></div>
+                      </div>
+                    </form>
+                   </div>
+                   <hr class="bg-white">
+                   <div id="box_view_all_users">
+                    <table class="table table-striped table-hover bg-white">
+                      <tr>
+                        <th>ลำดับ</th>
+                        <th>ชื่อ</th>
+                        <th>นามสกุล</th>
+                        <th>อีเมล</th>
+                        <th></th>
+                      </tr>
+
+                      <?php foreach($users as $item){ $user_no++;?>
+                      <tr>
+                        <td><?php echo $user_no;?></td>
+                        <td><?php echo $item['fname'];?></td>
+                        <td><?php echo $item['lname'];?></td>
+                        <td><?php echo $item['email'];?></td>
+                        <td>
+                          <button class="btn btn-info btn_users_show_details_users" id="<?php echo $item['user_id'];?>" data-bs-toggle="modal" data-bs-target="#modal_users_show_details_users">รายละเอียดเพิ่มติม</button>
+                        </td>
+                      </tr>
+                      <?php } ?>
+
+                    </table>
+                   </div>
+                 </div>
+
+               </div>
+
+                <!-- สิ้นสุดส่วนของผู้ใข้งาน -->
+
                
                <div class="tab-pane fade" id="list-index" role="tabpanel" aria-labelledby="list-index-list"></div>
             
@@ -165,6 +262,96 @@
      </div>
 
      <!-- เริ่มส่วน Modal -->
+       
+       <!-- start modal users -->
+         <!-- รายละเอียด -->
+         <div class="modal fade" id="modal_users_show_details_users" data-bs-backdrop="static">
+           <div class="modal-dialog modal-lg">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title">รายละเอียดผู้ใช้งาน</h5>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                 <div id="box_users_show_details_users"></div>
+               </div>
+               <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+               </div>
+             </div>
+           </div>
+         </div>
+
+       <!-- end modal users -->
+       
+       <!-- start Order -->
+         <!-- ข้อมูลสั่งซื้อ -->
+         <div class="fade modal" id="order_modal_order_details" data-bs-backdrop="static">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">รายละเอียดสั่งซื้อ</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div id="box_view_orders_order_details"></div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+         </div>
+
+         <!-- ข้อมูลลูกค้า -->
+         <div class="fade modal" id="order_modal_user_details" data-bs-backdrop="static">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">รายละเอียดผู้สั่งซื้อ</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div id="box_orders_show_user"></div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+         </div>
+
+         <!-- อัพเดทสถาะ -->
+         <div class="fade modal" id="order_modal_update_status" data-bs-backdrop="static">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">อัพเดทสถานะ</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <form id="form_order_update_status_order" action="../config/order.php" method="POST">
+                      <input type="hidden" name="check_orders_update_status_order" value="1">
+                      <input type="hidden" name="orders_id" id="set_edit_order_id">
+                      <select class="form-select" name="status">
+                        <option value="ยังไม่ได้จัดส่ง">ยังไม่ได้จัดส่ง</option>
+                        <option value="กำลังจัดส่ง">กำลังจัดส่ง</option>
+                        <option value="ได้รับสินค้าเรียบร้อย">ได้รับสินค้าเรียบร้อย</option>
+                      </select>
+                      <hr class="bg-white">
+                      <input type="submit" class="btn btn-success" value="ยืนยัน">
+                    </form>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+         </div>
+
+       <!-- end Order -->
 
        <!--เริ่ม shoes -->
          
@@ -443,7 +630,6 @@
                          <input type="text" name="name" class="form-control w-75" placeholder="ex. Nike">
                        </div>
                        <br>
-                       
                        <div>
                          <label>โลโก้ แบรนด์</label>
                          <div>
