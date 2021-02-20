@@ -1,32 +1,6 @@
  *{
      margin: 0;
  }
-
-/* Start register check */
- .success {
-  width: 100%;
-  margin: 0 auto;
-  padding: 10px;
-  border: 1px solid #3c763d;
-  color: #3c763d;
-  background: #dff0d8;
-  border-radius: 5px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-.error {
-  width: 100%;
-  margin: 0 auto;
-  padding: 10px;
-  border: 1px solid #a94442;
-  color: #a94442;
-  background: #f2dede;
-  border-radius: 5px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-/* End register check */
-
  .menu-bar{
     height: 70px;
     display: block;
@@ -49,7 +23,7 @@
     height: 65px;
     text-align: center;
     display: block;
-    background-color: black;
+    background-color: #FFBE0D;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -70,13 +44,13 @@
     margin-bottom: 10px;
     width: 40%;
 }
-/* .content{
+.content{
     display: block;
     padding-left: 40%;
    
     height: auto;
     padding-top: 50px;
-} */
+}
 
 input[type=text]{
   border-style: solid;

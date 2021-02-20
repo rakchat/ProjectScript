@@ -3,9 +3,9 @@
     session_start();
 
     if (!$_SESSION['userid']) {
-        header("Location: homepage-non-login.php");
-
+        header("Location: form_login.php");
     } else {
+
 ?>
 
 
@@ -35,8 +35,6 @@
       </div>
       <a href="#">|</a> 
       <a href="#"> Contact </a> 
-      <a href="#">|</a>
-      <a href="homepage.php">Home</a> 
   </div>
 <body>
     <div class="header">

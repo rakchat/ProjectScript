@@ -15,7 +15,6 @@
         $address = $_POST['address'];
         $status = $_POST['status'];
 
-
         $user_check = "SELECT * FROM users WHERE email = '$email' LIMIT 1";
         $result = mysqli_query($conn, $user_check);
         $user = mysqli_fetch_assoc($result);
@@ -39,7 +38,7 @@
             //
             
             $query = "INSERT INTO users (fname, lname, email, password, image, phone, address, status)
-                        VALUE ('$firstname', '$lastname', '$email', '$passwordenc', '$basename', '$phone', '$address', 'user')";
+                        VALUE ('$firstname', '$lastname', '$email', '$passwordenc', '$basename', '$phone', '$address', '$status')";
             $result = mysqli_query($conn, $query);
             
             if ($result) {
@@ -70,28 +69,8 @@
 <header class="header-top">
     <!--ชื่อร้านขายรองเท้า-->
 </header>
-<div class="menu-bar">
-        <div class="background">
-            <a href="form_login.php">Login</a> 
-            <a href="#">|</a> 
-            <a href="register.php">Register</a>
-            <a href="#">|</a> 
-            <a href="#"> Contact </a> 
-            <a href="#">|</a>
-            <a href="homepage-non-login.php">Home</a> 
-      </div>
-</div>
 
 <body>
-
-
-
-    <!-- <div class="menu-order"> -->
-        <!-- <a href="#">Adidas</a>
-        <a href="#">Nike</a>
-        <a href="#">Vans</a>
-        <a href="#">Converse</a> -->
-    <!-- </div> -->
 
     <div class="container t">
         <div class="row justify-content-center m-3">
@@ -141,6 +120,15 @@
                     <label for="password" class="form-label">Password</label> <input type="password" class="form-control" name="password" placeholder="Enter your Password" required>
                 </div>
 
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select name="status" class="form-control">
+                        <option value="user" selected>User</option>
+                        <option value="manager">Manager</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+
                 <div class="row justify-content-center">
                         <div class="col-4">
                             <button type ="submit" id="submit" name="submit" class="btn btn-success">Register</button>
@@ -159,18 +147,6 @@
                 </div>
         </div>
     </form>
-
-    <body>
-        <div class="footer">
-            สมาชิก<br>
-            1. B6122256 นายสุนทร รักชาติ<br>
-            2. B6122553 นายอิบรอเฮ็ม บูละ<br>
-            3. B6122171 นายธิติพันธุ์ พอควร<br>
-            4. B6121785 นางสาวปนัดดา เบ็ดกระโทก<br>
-            5. B6122898 นายปิยพนธ์ พุ่มหมื่นไวย<br>
-        </div>
-
-    </body>
 
 </html>
 

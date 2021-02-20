@@ -1,44 +1,61 @@
-<?php 
-
-    session_start();
-
-    if (!$_SESSION['userid']) {
-        header("Location: homepage-non-login.php");
-
-    } else {
-?>
-
-
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shoes Shop</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="menu/menu-style.css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css\styles1.css" />
+
+
+    <title>จุฬาลงกรณ์มหาวิทยาลัย</title>
 </head>
-      <header class="header-top"> 
-      <!--ชื่อร้านขายรองเท้า-->
-  </header>
-  <div class="menu-bar">
-      <a href="logout.php" class="text-danger">Logout</a>
-      <a href="#">|</a> 
-      <div class="background">
-        <a href="#"><?php echo $_SESSION['user']; ?></a> 
-        <a href="#"> <img src= "photos/<?php echo $_SESSION['photo']; ?>" width="50" height="40" style="border-radius: 10px;" ></a> 
-      </div>
-      <a href="#">|</a> 
-      <a href="#"> Contact </a> 
-      <a href="#">|</a>
-      <a href="homepage.php">Home</a> 
-  </div>
 <body>
+    <!-- ========================== menu ========================== -->
+    <div class="layout-container">
+        <div class="menu">
+            <nav>
+                <div class="c1">
+                    <a href="index.html">
+                        <img src="images\logomenu.png" alt="" style="height: 9.5vw;">
+                    </a>
+                    <div id="icon">
+                        <i class="fa fa-bars"></i>
+                    </div>
+                </div>
+
+                <a href="index.html" class="logo-tab">
+                    <img src="images\logomenu.png" alt="" style="height: 3.1em; width: 15em; margin: 0px 0px 10px 0px;">
+                </a>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    
+                    <li><a href="#">Brand<i class="fa fa-sort-desc" style="font-size: initial"></i></a>
+                        <ul>
+                            <li><a href="#">Adidas</a></li>
+                            <li><a href="#">Nike</a></li>
+                            <li><a href="#">Convers</a></li>
+                            <li><a href="#">Vans</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="index.html">Register</a></li>
+                    <li><a href="index.html">Login</a></li>
+
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+    <!-- ========================== menu ========================== -->
+
     <div class="header">
         <div id="demo" class="carousel slide" data-ride="carousel">
 
@@ -80,10 +97,10 @@
           </div>
     </div>
     <div class="menu-order">
-        <a href="#">Adidas</a> 
+        <!-- <a href="#">Adidas</a> 
         <a href="#">Nike</a> 
         <a href="#">Vans</a> 
-        <a href="#">Converse</a> 
+        <a href="#">Converse</a>  -->
     </div>
     <div class="Search-box">
       <i class="fa fa-search w3-large" > <b>Search</b> </i>  <input type="text"   placeholder="Search">  <i class="fa fa-shopping-cart" style="font-size:24px"></i>
@@ -97,7 +114,7 @@
         <div class="container">
           <h5>Adidas Ultra Boost</h5>
           <p class="title">3500 Baht</p>
-          <p><button onclick="location.href='detailorder.html'">Add to Cart</button></p>
+          <p><button onclick="location.href='detailorder.html'">More</button></p>
         </div>
       </div>
     </div>
@@ -110,7 +127,7 @@
         <div class="container">
           <h5>Adidas Ultra Boost</h5>
           <p class="title">3500 Baht</p>
-          <p><button>Add to Cart</button></p>
+          <p><button>More</button></p>
         </div>
       </div>
     </div>
@@ -121,23 +138,44 @@
     <div class="footer">
     สมาชิก<br>
     1. B6122256 นายสุนทร รักชาติ<br>
-    2. นายอิบรอเฮ็ม บูละ<br>
+    2. B6122553 นายอิบรอเฮ็ม บูละ<br>
     3. B6122171 นายธิติพันธุ์ พอควร<br>
     4. B6121785 นางสาวปนัดดา เบ็ดกระโทก<br>
     5. B6122898 นายปิยพนธ์ พุ่มหมื่นไวย<br>
 </div>
-    <!-- ผู้ดูแลรระบบ -->
-    <!-- Feature 1.ตกแต่ง -->
 
-    <!-- เจ้าหน้าที่ -->
-    <!-- Feature 1.รายงาน Report กราฟ -->
+    <!-- ========================== JS ========================== -->
+    <script>
+        $(window).scroll(function() {
+              var scrollPos = $(this).scrollTop();
+              $(".logo_banner").css({
+                    'width' : 70 - (scrollPos/12) + '%' 
+              });
+        });
 
-    <!-- ผู้ใช้ทั่วไป -->
-    <!-- Feature 1.ตะกร้าสินค้า 2.Filter กรอง เรียง ราคา, สินค้ายอดนิยม, ดาว -->
+        $("#icon").click(function() {
+            $("ul").slideToggle();
+            $("ul ul").css("display", "none");
+        });
 
-    <!-- Update 20/1/2564 -->
+        $("ul li").click(function() {
+            $("ul ul").slideUp();
+            $(this).find('ul').slideToggle();
+        });
 
+        $(window).resize(function() {
+            if ($(window).width() > 768) {
+                $("ul").removeAttr('style');
+            }
+        });
+    </script>
+    <!-- ========================== JS ========================== -->
+
+    <!-- ========================== AOS ========================== -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <!-- ==============x=========== AOS =========x================ -->
 </body>
 </html>
-
-<?php } ?>

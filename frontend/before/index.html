@@ -1,14 +1,3 @@
-<?php 
-
-    session_start();
-
-    if (!$_SESSION['userid']) {
-        header("Location: homepage-non-login.php");
-
-    } else {
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,23 +10,26 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css\styles1.css" />
+    <link rel="stylesheet" href="css\styles.css" />
 </head>
       <header class="header-top"> 
       <!--ชื่อร้านขายรองเท้า-->
   </header>
   <div class="menu-bar">
-      <a href="logout.php" class="text-danger">Logout</a>
-      <a href="#">|</a> 
-      <div class="background">
-        <a href="#"><?php echo $_SESSION['user']; ?></a> 
-        <a href="#"> <img src= "photos/<?php echo $_SESSION['photo']; ?>" width="50" height="40" style="border-radius: 10px;" ></a> 
+   
+    <a href="login-frontend/form_login.php">Login</a> 
+    <a href="login-frontend/register.php">Register</a> 
+    <a href="Contact.html"> Contact </a> 
+    <div class="dropdown">
+      Brand
+      <div class="dropdown-content">
+          <a href="#">Adidas</a><br>
+          <a href="#">Nike</a><br>
+          <a href="#">Vans</a><br>
+          <a href="#">Converse</a><br>
       </div>
-      <a href="#">|</a> 
-      <a href="#"> Contact </a> 
-      <a href="#">|</a>
-      <a href="homepage.php">Home</a> 
   </div>
+</div>
 <body>
     <div class="header">
         <div id="demo" class="carousel slide" data-ride="carousel">
@@ -56,7 +48,7 @@
               <div class="carousel-item active">
                 <img src="image/banner.jpg" alt="Los Angeles" width="1100" height="500">
               </div>
-              <div class="carousel-item">
+              <div class="carousel-item ">
                 <img src="image/banner2.jpg" alt="Chicago" width="1100" height="500">
               </div>
               <div class="carousel-item">
@@ -68,6 +60,7 @@
               <div class="carousel-item">
                 <img src="image/banner5.jpg" alt="New York" width="1100" height="500">
               </div>
+              
             </div>
             
             <!-- Left and right controls -->
@@ -79,15 +72,22 @@
             </a>
           </div>
     </div>
-    <div class="menu-order">
-        <a href="#">Adidas</a> 
-        <a href="#">Nike</a> 
-        <a href="#">Vans</a> 
-        <a href="#">Converse</a> 
-    </div>
-    <div class="Search-box">
-      <i class="fa fa-search w3-large" > <b>Search</b> </i>  <input type="text"   placeholder="Search">  <i class="fa fa-shopping-cart" style="font-size:24px"></i>
-    </div>
+      <div class="container"> 
+        <div class="row justify-content-md-center">
+          <div class="col col-lg-2" >
+              <i class="fa fa-search"> <b>Search</b> </i>  
+          </div>
+          <div class="col-md-6">
+              <input type="text" class="form-control"  placeholder="Search">  
+          </div>
+          <div class="col col-lg-2"> 
+            <i class="fa fa-shopping-cart" style="font-size:24px"></i>
+          </div>
+            
+         </div>
+        </div>
+
+     
 <div class="content">
 <h2>Adidas</h2>
 <div class="row">
@@ -110,7 +110,7 @@
         <div class="container">
           <h5>Adidas Ultra Boost</h5>
           <p class="title">3500 Baht</p>
-          <p><button>Add to Cart</button></p>
+          <p><button onclick="location.href='detailorder.html'">Add to Cart</button></p>
         </div>
       </div>
     </div>
@@ -119,12 +119,28 @@
 
 <body>
     <div class="footer">
-    สมาชิก<br>
-    1. B6122256 นายสุนทร รักชาติ<br>
-    2. นายอิบรอเฮ็ม บูละ<br>
-    3. B6122171 นายธิติพันธุ์ พอควร<br>
-    4. B6121785 นางสาวปนัดดา เบ็ดกระโทก<br>
-    5. B6122898 นายปิยพนธ์ พุ่มหมื่นไวย<br>
+      <div class="container"> 
+        <div class="row">
+          <div class="col-8">    
+            <h3>สมาชิก </h3><br>
+            1. B6122256 นายสุนทร รักชาติ<br>
+            2. นายอิบรอเฮ็ม บูละ<br>
+            3. B6122171 นายธิติพันธุ์ พอควร<br>
+            4. B6121785 นางสาวปนัดดา เบ็ดกระโทก<br>
+            5. B6122898 นายปิยพนธ์ พุ่มหมื่นไวย<br>
+           </div>
+            <div class="col-">
+              <h3>Contact </h3> <br>
+             E-mail: sixshoes@shop.com<br>
+             Phone: +66 826-5328<br>
+              Facebook: Sixshoes<br>
+              Development by Sixshoes@2021<br>
+              <br>
+            </div>
+
+
+        </div>
+      </div>
 </div>
     <!-- ผู้ดูแลรระบบ -->
     <!-- Feature 1.ตกแต่ง -->
@@ -139,5 +155,3 @@
 
 </body>
 </html>
-
-<?php } ?>

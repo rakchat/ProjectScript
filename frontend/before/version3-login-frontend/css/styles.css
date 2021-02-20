@@ -2,24 +2,19 @@
      margin: 0;
  }
 
-.background{
-  background-color: gray;
-}
-
  .menu-bar{
     height: 70px;
     display: block;
     background-color: black;
     padding-top: 20px;
     padding-bottom: 20px;
-}
-.menu-bar a{
+} */
+/* .menu-bar a{
     float: right;
     text-decoration: none;
     color: white;
     padding-right: 20px;
     font-size: 20px;
-    
   
 }
 .menu-bar a:hover{
@@ -30,7 +25,7 @@
     height: 65px;
     text-align: center;
     display: block;
-    background-color: black;
+    background-color: #FFBE0D;
     padding-top: 20px;
     padding-bottom: 20px;
 }

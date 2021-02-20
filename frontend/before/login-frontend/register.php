@@ -71,27 +71,22 @@
     <!--ชื่อร้านขายรองเท้า-->
 </header>
 <div class="menu-bar">
-        <div class="background">
-            <a href="form_login.php">Login</a> 
-            <a href="#">|</a> 
-            <a href="register.php">Register</a>
-            <a href="#">|</a> 
-            <a href="#"> Contact </a> 
-            <a href="#">|</a>
-            <a href="homepage-non-login.php">Home</a> 
-      </div>
+
+    <a href="form_login.php">Login</a>
+    <a href="register.php">Register</a>
+    <a href="#"> Contact </a>
 </div>
 
 <body>
 
 
 
-    <!-- <div class="menu-order"> -->
-        <!-- <a href="#">Adidas</a>
+    <div class="menu-order">
+        <a href="#">Adidas</a>
         <a href="#">Nike</a>
         <a href="#">Vans</a>
-        <a href="#">Converse</a> -->
-    <!-- </div> -->
+        <a href="#">Converse</a>
+    </div>
 
     <div class="container t">
         <div class="row justify-content-center m-3">
@@ -107,10 +102,7 @@
                     <?php endif; ?>
             </div>
 
-                <!-- Start image header -->
                 <img src="img/user.png" style="width: 200px; height: 200px; margin-left: 50px; border-radius: 50%;">
-                <!-- End image header -->
-
                 <br><br>
                 <h1 style="color: black; padding-left: 70px;">Register</h1><br>
 

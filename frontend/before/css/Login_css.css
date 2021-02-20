@@ -3,37 +3,6 @@ body{
     margin-top: 0px;
 }
 
-.menu-bar{
-    height: 70px;
-    display: block;
-    background-color: black;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-.menu-bar a{
-    float: right;
-    text-decoration: none;
-    color: white;
-    padding-right: 20px;
-    font-size: 20px;
-}
-.menu-bar a:hover{
-    color: #FFBE0D;
-}
-
-.success {
-    width: 100%;
-    margin: 0 auto;
-    padding: 10px;
-    border: 1px solid #3c763d;
-    color: #3c763d;
-    background: #dff0d8;
-    border-radius: 5px;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-
 .loginall{
     position: fixed;
 }
