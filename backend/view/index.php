@@ -267,6 +267,7 @@
                  
                  <div>
                   <a hef="#" class="btn btn-primary">เพิ่มผู้ใช้งาน</a>
+                  <a href="#" class="btn btn-warning">จัดการข้อมูลส่วนตัว</a> <!-- ยังไม่ได้ทำ  -->
                   <div class="container-fluid p-0 m-0">
                     <form action="../config/order.php" method="POST">
                       <div class="row mt-3">
