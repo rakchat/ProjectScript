@@ -86,8 +86,9 @@ include("connection.php");
             <div class="row">
                 <div class="col">
                     <h4 style="text-align: center;">Manage My Account</h4><br><br>
-                    <center><img id="userimg" src="photos/<?php echo $image; ?>" </center><br><br>       
-                     <center><input type="file" class="form-control" name="image" id="image">
+                    <center><img id="userimg" src="photos/<?php echo $image; ?>"><br><br>
+                    <h6 style="text-align: center;">Change Image</h6>
+                     <input type="file" class="form-control" name="image" id="image">
                         </center></br>
 
                 </div>
@@ -95,7 +96,7 @@ include("connection.php");
                     <br><br><br>
                     <h6 style="text-align: center;">Personal Profile</h6><br>
                     <input type="hidden" class="form-control" name="user_id" value="<?php echo $userid; ?>" />
-                    <label for="name">Name :</label><input type="text" id="name" name="name" value="<?php echo $fname . " " . $lname; ?>" disabled><br>
+                    <label for="name">Name:</label><input type="text" id="name" name="name" value="<?php echo $fname . " " . $lname; ?>" disabled><br>
                     <label for="email">Email:</label><input type="text" id="email" value="<?php echo $email; ?>" disabled><br>
                     <label for="password">Password:</label><input type="password" id="inputPassword4" name="password" value="password" required><br><br><br><br>
                     <center><button type="submit" class="save" id="savebutton" onclick="Saveuser()">Save</button></center>
