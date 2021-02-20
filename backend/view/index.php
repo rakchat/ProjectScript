@@ -119,7 +119,7 @@
                          <td><?php echo $item['order_status'];?></td>
                          <td>
                            <button class="btn btn-info btn_order_show_orders_details" data-bs-toggle="modal" data-bs-target="#order_modal_order_details" id="<?php echo $item['orders_id']; ?>">รายละเอียดสั่งซื้อ</button>
-                           <button class="btn btn-warning btn_order_show_user_details" data-bs-toggle="modal" data-bs-target="#order_modal_user_details" id="<?php echo $item['orders_id']; ?>">ข้อมูลลูกค้า</button>
+                           <button class="btn btn-warning btn_order_show_user_details" data-bs-toggle="modal" data-bs-target="#order_modal_user_details" id="<?php echo $item['user_id']; ?>">ข้อมูลลูกค้า</button>
                            <button class="btn btn-success btn_order_show_update_status_order" data-bs-toggle="modal" data-bs-target="#order_modal_update_status" id="<?php echo $item['orders_id']; ?>">อัพเดทสถานะ</button>
                          </td>
                        </tr>

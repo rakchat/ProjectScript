@@ -1,3 +1,12 @@
+<?php
+
+   include('../../backend/config/mysql.php');
+   $db = new db();
+   $con = $db->connectDB();
+
+   $brands = $db->selectAll($con,'brand_shoes');
+?>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -38,11 +47,15 @@
                     <li><a href="index.html">Home</a></li>
                     
                     <li><a href="#">Brand<i class="fa fa-sort-desc" style="font-size: initial"></i></a>
+
                         <ul>
-                            <li><a href="#">Adidas</a></li>
-                            <li><a href="#">Nike</a></li>
-                            <li><a href="#">Convers</a></li>
-                            <li><a href="#">Vans</a></li>
+                          <?php
+                            foreach ($brands as $item) {
+                          ?>
+                            <li><a href="javascript:void(0)" id="<?php echo $item['brand_id']; ?>"><?php echo $item['brand_name']?></a></li>
+                          <?php
+                            } 
+                          ?>  
                         </ul>
                     </li>
 

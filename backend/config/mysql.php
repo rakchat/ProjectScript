@@ -8,7 +8,7 @@
         return $con;
     }
 
-    //
+    // 
 
     public function query($con,$sql){
         $query = mysqli_query($con, $sql);
@@ -44,7 +44,19 @@
     }
 
     public function selectALLJoinTwoTableWhereOneColumn($con,$table1,$table2,$column1,$column2,$ColumnWhere,$value){
-        $sql = "SELECT * FROM $table1 INNER JOIN $table2 ON `$table1`.`$column1` = `$table2`.$column2 WHERE $ColumnWhere = '$value'";
+        $sql = "SELECT * FROM $table1 INNER JOIN $table2 ON `$table1`.`$column1` = `$table2`.$column2 WHERE $ColumnWhere = '$value' ";
+        $query = mysqli_query($con,$sql);
+        return $query;
+    }
+
+    public function selectALLJoinTwoTableWhereOneColumnOrderByOne($con,$table1,$table2,$column1,$column2,$ColumnWhere,$value, $orderby, $option ){
+        $sql = "SELECT * FROM $table1 INNER JOIN $table2 ON `$table1`.`$column1` = `$table2`.$column2 WHERE $ColumnWhere = '$value' ORDER BY $orderby";
+        $query = mysqli_query($con,$sql);
+        return $query;
+    }
+
+    public function selectALLJoinTwoTableWhereTwoColumn($con,$table1,$table2,$column1,$column2,$ColumnWhere1,$value1,$ColumnWhere2,$value2){
+        $sql = "SELECT * FROM $table1 INNER JOIN $table2 ON `$table1`.`$column1` = `$table2`.$column2 WHERE $ColumnWhere1 = '$value1' AND $ColumnWhere2 = '$value2'";
         $query = mysqli_query($con,$sql);
         return $query;
     }

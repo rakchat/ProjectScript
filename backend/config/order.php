@@ -68,7 +68,7 @@
                 $output .= "<td>". $item['order_status']."</td>";
                 $output .= "<td>";
                 $output .= "<button class=\"btn btn-info btn_order_show_orders_details\" data-bs-toggle=\"modal\" data-bs-target=\"#order_modal_order_details\" id=\"".$item['orders_id']."\">รายละเอียดสั่งซื้อ</button>  ";
-                $output .= "<button class=\"btn btn-warning btn_order_show_user_details\" data-bs-toggle=\"modal\" data-bs-target=\"#order_modal_user_details\" id=\"".$item['orders_id']."\">ข้อมูลลูกค้า</button>  ";
+                $output .= "<button class=\"btn btn-warning btn_order_show_user_details\" data-bs-toggle=\"modal\" data-bs-target=\"#order_modal_user_details\" id=\"".$item['user_id']."\">ข้อมูลลูกค้า</button>  ";
                 $output .= "<button class=\"btn btn-success btn_order_show_update_status_order\" data-bs-toggle=\"modal\" data-bs-target=\"#order_modal_update_status\" id=\"".$item['orders_id']."\">อัพเดทสถานะ</button>  ";
                 $output .= "</td>";
                 $output .= "</tr>";
