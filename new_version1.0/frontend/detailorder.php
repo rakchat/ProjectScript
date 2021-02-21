@@ -212,7 +212,7 @@ $active_banner2 = true;
           <div class="modal-header">Login</div>
           <div class="modal-body">
             <div>
-              <form action="config/login.php" method="POST">
+              <form action="config/login.php" method="POST" id="form_login">
                   <input type="hidden" id="set_id_page" name="id_page">
                 <div class="col-12">
                   <input type="text" name="email" placeholder="Email" class="form-control">
@@ -229,7 +229,7 @@ $active_banner2 = true;
           </div>
           <div class="modal-footer">
           <button class="btn bg-danger text-white" data-dismiss="modal">Cancel</button>
-            <button class="btn bg-info text-white">Login</button>
+            <button class="btn bg-info text-white" id="btn_login">Login</button>
           </div>
         </div>
       </div>

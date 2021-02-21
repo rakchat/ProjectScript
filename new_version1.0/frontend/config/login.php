@@ -15,9 +15,10 @@
         $_SESSION['user'] = $row['fname'] . " " . $row['lname'];
         $_SESSION['photo'] = $row['image'];
         $_SESSION['userlevel'] = $row['status'];
+        echo "1";
 
     } else {
-        echo "<script>alert('User หรือ Password ไม่ถูกต้อง');</script>";
+        echo "0";
     }
   }
 

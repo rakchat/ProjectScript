@@ -9,4 +9,20 @@ $(document).ready(function(){
             $('#set_id_page').val(id)
         }
     })
+
+    $('#btn_login').click(function(){
+        $('#form_login').submit()
+    })
+
+    $('#form_login').on('submit',function(event){
+        event.preventDefault();
+        $.ajax({
+            url: "config/login.php",
+            method: "POST",
+            data: $(this).serialize(),
+            success:function(data){
+                alert(data)
+            }
+        })
+    })
 })
