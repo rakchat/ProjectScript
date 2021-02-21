@@ -109,7 +109,7 @@
                          <th></th>
                        </tr>
                        <?php 
-                         $orderQuery = $db->selectALLJoinTwoTable($con,'orders','users','user_id','user_id');
+                         $orderQuery = $db->selectALLJoinTwoTableOrderBy($con,'orders','users','user_id','user_id','orders_id','DESC');
                          foreach($orderQuery as $item){
                        ?>
                        <tr>
@@ -242,7 +242,7 @@
                             <p class="card-title">เปลี่ยนรูปภาพ</p>
                             <input type="hidden" name="check_banner_update_image" value="<?php echo $item['image']; ?>">
                             <input type="hidden" name="edit_id" value="<?php echo $item['banner_id']; ?>">
-                            <input type="file" name="image">
+                            <input type="file" name="image" class="form-control">
                             <hr>
                             <input type="submit" value="บันทึก" class="btn btn-primary">
                           </form>
@@ -421,6 +421,7 @@
                         <option value="ยังไม่ได้จัดส่ง">ยังไม่ได้จัดส่ง</option>
                         <option value="กำลังจัดส่ง">กำลังจัดส่ง</option>
                         <option value="ได้รับสินค้าเรียบร้อย">ได้รับสินค้าเรียบร้อย</option>
+                        <option value="ยกเลิก">ยกเลิก</option>
                       </select>
                       <hr class="bg-white">
                       <input type="submit" class="btn btn-success" value="ยืนยัน">
@@ -483,6 +484,11 @@
                        <div class="col-6">
                          <label>ราคา</label>
                          <input type="number" class="form-control w-100" name="price" >
+                       </div>
+
+                       <div classs="col-12">
+                         <label>รายละเอียด</label>
+                         <textarea class="form-control" name="desciption" placeholder="รายบะเอียด"></textarea>
                        </div>
                        
                        <br>
@@ -589,6 +595,11 @@
                          <input type="number" class="form-control w-100" name="price" id="set_data_price_shoes">
                        </div>
 
+                       <div classs="col-12">
+                         <label>รายละเอียด</label>
+                         <textarea class="form-control" name="desciption" placeholder="รายบะเอียด" id="set_description"></textarea>
+                       </div>
+
                        <br>
                        <hr class="mt-3">
 
@@ -678,7 +689,9 @@
                        <tr>
                         <th>ราคา: <span id="show_shoes_price"></span></th>
                        </tr>
-
+                       <tr>
+                         <th colspan="3">รายละเอียด: <span id="show_shoes_description"></span></th>
+                       </tr>
                     </table>
                    </div>
                  </div>

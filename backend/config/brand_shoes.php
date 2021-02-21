@@ -65,7 +65,7 @@
             $output .= "<td>".$item_bsh['brand_name']."</td>";
             $output .= "<td><img src=\"../resource/uploads/".$item_bsh['logo'] ."\" style=\"width: 90px; height: 80px;\"> </td>";
             $output .= "<td>";
-            $output .= "<button class=\"btn btn-info btn_show_details_brand_shoes\" id=\"". $item_bsh['brand_id'] ."\">รายละเอียด</button>  &nbsp; | &nbsp;";
+            $output .= "<button class=\"btn btn-info btn_show_details_brand_shoes\" id=\"". $item_bsh['brand_id'] ."\" data-bs-toggle=\"modal\" data-bs-target=\"#details_brand_shoes_modal\">รายละเอียด</button>  &nbsp; | &nbsp;";
             $output .= "<button class=\"btn btn-warning btn_view_brand_shoes\" id=\"".$item_bsh['brand_id']."\" data-bs-toggle=\"modal\" data-bs-target=\"#edit_brand_shoes_modal\">แก้ไข</button> &nbsp; | &nbsp;";
             $output .= "<button class=\"btn btn-danger btn_delete_brand_shoes\" id=\"". $item_bsh['brand_id'] ."\">ลบ</button>";
             $output .= "</td>";
@@ -129,7 +129,7 @@
             $output .= "<td>".$item_bsh['brand_name']."</td>";
             $output .= "<td><img src=\"../resource/uploads/".$item_bsh['logo'] ."\" style=\"width: 90px; height: 80px;\"> </td>";
             $output .= "<td>";
-            $output .= "<button class=\"btn btn-info btn_show_details_brand_shoes\" id=\"". $item_bsh['brand_id'] ."\">รายละเอียด</button>  &nbsp; | &nbsp;";
+            $output .= "<button class=\"btn btn-info btn_show_details_brand_shoes\" id=\"". $item_bsh['brand_id'] ."\" data-bs-toggle=\"modal\" data-bs-target=\"#details_brand_shoes_modal\">รายละเอียด</button>  &nbsp; | &nbsp;";
             $output .= "<button class=\"btn btn-warning btn_view_brand_shoes\" id=\"".$item_bsh['brand_id']."\" data-bs-toggle=\"modal\" data-bs-target=\"#edit_brand_shoes_modal\">แก้ไข</button> &nbsp; | &nbsp;";
             $output .= "<button class=\"btn btn-danger btn_delete_brand_shoes\" id=\"". $item_bsh['brand_id'] ."\">ลบ</button>";
             $output .= "</td>";
@@ -200,7 +200,7 @@
           $output .= "<td>".$item_bsh['brand_name']."</td>";
           $output .= "<td><img src=\"../resource/uploads/".$item_bsh['logo'] ."\" style=\"width: 90px; height: 80px;\"> </td>";
           $output .= "<td>";
-          $output .= "<button class=\"btn btn-info btn_show_details_brand_shoes\" id=\"". $item_bsh['brand_id'] ."\">รายละเอียด</button>  &nbsp; | &nbsp;";
+          $output .= "<button class=\"btn btn-info btn_show_details_brand_shoes\" id=\"". $item_bsh['brand_id'] ."\" data-bs-toggle=\"modal\" data-bs-target=\"#details_brand_shoes_modal\">รายละเอียด</button>  &nbsp; | &nbsp;";
           $output .= "<button class=\"btn btn-warning btn_view_brand_shoes\" id=\"".$item_bsh['brand_id']."\" data-bs-toggle=\"modal\" data-bs-target=\"#edit_brand_shoes_modal\">แก้ไข</button> &nbsp; | &nbsp;";
           $output .= "<button class=\"btn btn-danger btn_delete_brand_shoes\" id=\"". $item_bsh['brand_id'] ."\">ลบ</button>";
           $output .= "</td>";

@@ -50,7 +50,7 @@
         $value = $_POST['status'];
         $query = $db->query($con, "UPDATE `orders` SET `order_status` = '$value' WHERE `orders`.`orders_id` = $id");
         if($query){
-            $orderQuery = $db->selectALLJoinTwoTable($con,'orders','users','user_id','user_id');
+            $orderQuery = $db->selectALLJoinTwoTableOrderBy($con,'orders','users','user_id','user_id','orders_id','DESC');
 
             $output .= "<table class=\"table table-striped table-hover bg-white \">";
             $output .= "<tr>";

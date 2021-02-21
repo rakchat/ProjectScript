@@ -4,8 +4,12 @@
    $db = new db();
    $con = $db->connectDB();
 
-   $shoes_all = $db->selectALLJoinTwoTable($con,'shoes','brand_shoes','brand_id','brand_id');
-    //$shoes_all = $db->query($con,'SELECT DISTINCT shoes.model, brand_shoes.brand_name FROM shoes INNER JOIN brand_shoes ON shoes.brand_id = brand_shoes.brand_id ');
+   $shoes_all = $db->selectALLJoinTwoTableOrderBy($con,'shoes','brand_shoes','brand_id','brand_id','shoes_id','DESC');
+   $banner = $db->selectAll($con,'banner'); 
+   $active_banner = true;
+   $numUp = 0;
+   $active_banner2 = true;
+   //$shoes_all = $db->query($con,'SELECT DISTINCT shoes.model, brand_shoes.brand_name FROM shoes INNER JOIN brand_shoes ON shoes.brand_id = brand_shoes.brand_id ');
 
 ?>
 
@@ -49,31 +53,47 @@
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
-              <li data-target="#demo" data-slide-to="0" class="active"></li>
-              <li data-target="#demo" data-slide-to="1"></li>
-              <li data-target="#demo" data-slide-to="2"></li>
-              <li data-target="#demo" data-slide-to="3"></li>
-              <li data-target="#demo" data-slide-to="4"></li>
+              <?php 
+               foreach($banner as $item){
+              ?>
+
+                <?php 
+                 if($active_banner == true){
+                   ?>
+                   <li data-target="#demo" data-slide-to="<?php echo $numUp; ?>" class="active"></li>
+                <?php
+                    $active_banner = false;
+                 }else{
+                     ?>
+                    <li data-target="#demo" data-slide-to="<?php echo $numUp; ?>"></li>
+              <?php
+                 }
+               $numUp++;
+               }
+              ?>
             </ul>
             
             <!-- The slideshow -->
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="image/banner.jpg" alt="Los Angeles" width="1100" height="500">
-              </div>
-              <div class="carousel-item ">
-                <img src="image/banner2.jpg" alt="Chicago" width="1100" height="500">
-              </div>
-              <div class="carousel-item">
-                <img src="image/banner3.jpg" alt="New York" width="1100" height="500">
-              </div>
-              <div class="carousel-item">
-                <img src="image/banner4.jpg" alt="New York" width="1100" height="500">
-              </div>
-              <div class="carousel-item">
-                <img src="image/banner5.jpg" alt="New York" width="1100" height="500">
-              </div>
-              
+              <?php foreach($banner as $item){ ?>
+
+
+                <?php if($active_banner2 == true){ ?>
+                  <div class="carousel-item active">
+                    <img src="../backend/resource/uploads/<?php echo $item['image']; ?>" alt="Los Angeles" width="1100" height="500">
+                  </div>
+                <?php
+                    $active_banner2 = false; 
+                    }else{ 
+                ?>
+                 <div class="carousel-item ">
+                   <img src="../backend/resource/uploads/<?php echo $item['image']; ?>"alt="Chicago" width="1100" height="500">
+                 </div>
+              <?php
+                }
+              } 
+             ?>
+
             </div>
             
             <!-- Left and right controls -->

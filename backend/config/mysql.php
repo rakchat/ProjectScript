@@ -43,6 +43,12 @@
         return $query;
     }
 
+    public function selectALLJoinTwoTableOrderBy($con,$table1,$table2,$column1,$column2,$orderby,$option){
+        $sql = "SELECT * FROM $table1 INNER JOIN $table2 ON `$table1`.`$column1` = `$table2`.$column2 ORDER BY $orderby $option";
+        $query = mysqli_query($con,$sql);
+        return $query;
+    }
+
     public function selectALLJoinTwoTableWhereOneColumn($con,$table1,$table2,$column1,$column2,$ColumnWhere,$value){
         $sql = "SELECT * FROM $table1 INNER JOIN $table2 ON `$table1`.`$column1` = `$table2`.$column2 WHERE $ColumnWhere = '$value' ";
         $query = mysqli_query($con,$sql);
@@ -50,7 +56,7 @@
     }
 
     public function selectALLJoinTwoTableWhereOneColumnOrderByOne($con,$table1,$table2,$column1,$column2,$ColumnWhere,$value, $orderby, $option ){
-        $sql = "SELECT * FROM $table1 INNER JOIN $table2 ON `$table1`.`$column1` = `$table2`.$column2 WHERE $ColumnWhere = '$value' ORDER BY $orderby";
+        $sql = "SELECT * FROM $table1 INNER JOIN $table2 ON `$table1`.`$column1` = `$table2`.$column2 WHERE $ColumnWhere = '$value' ORDER BY $orderby $option";
         $query = mysqli_query($con,$sql);
         return $query;
     }

@@ -75,13 +75,14 @@
 
   <table class="tableorder">
     <tr>
-      <th class="orderno">Order ID</th>
+      <th>Order ID</th>
       <th>Date</th>
       <th>Price</th>
       <th>Status</th>
+      <th></th>
     </tr>
-    <?php
-    $queryOrder = $db->selectALLJoinTwoTableWhereOneColumn($con,'orders','users','user_id','user_id','users.user_id','1');
+    <?php 
+    $queryOrder = $db->selectALLJoinTwoTableWhereOneColumnOrderByOne($con,'orders','users','user_id','user_id','users.user_id','1','orders_id','DESC');
     foreach ($queryOrder as $item) {
         ?>
     <tr>
@@ -89,6 +90,10 @@
       <td><?php echo $item['date'];?></td>
       <td><?php echo $item['order_total_price'];?></td>
       <td><?php echo $item['order_status'];?></td>
+      <td>
+        <button class="btn btn-info btn_order_show_orders_details" data-toggle="modal" data-target="#order_modal_order_details" id="<?php echo $item['orders_id']; ?>">รายละเอียดสั่งซื้อ</button>
+        <button class="btn btn-danger">ยกเลิก</button>
+      </td>
     </tr>
     <?php
     } ?>
@@ -112,8 +117,28 @@
               Facebook: Sixshoes<br>
               Development by Sixshoes@2021<br>
               <br>
-            </div>
+      </div>
 </div>
+
+         <!-- ข้อมูลสั่งซื้อ -->
+         <div class="fade modal" id="order_modal_order_details" data-backdrop="static">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 >รายละเอียดสั่งซื้อ</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div id="box_view_orders_order_details"></div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+         </div>
+
+         <script src="js/order.js"></script>
 </body>
 </html>
 

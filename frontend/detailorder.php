@@ -127,59 +127,59 @@
     </div>
 
     <div class="content">
-       <h2><?php echo $item['brand_name']. " " . $item['model']; ?></h2>
+       <h2 class="mb-5"><?php echo $item['brand_name']. " " . $item['model']; ?></h2>
        <center>
            <div class="row" style="width:60%;">
-               <div class="col-md-6 pr-1"><img src="../backend/resource/uploads/<?php echo $item['image1'];?>" class="w-100 mb-3" style="height: 360px;"></div>
-               <div class="col-md-6 pl-1"><img src="../backend/resource/uploads/<?php echo $item['image1'];?>" class="w-100 mb-3" style="height: 360px;"></div>
-               <div class="col-md-6 pr-1"><img src="../backend/resource/uploads/<?php echo $item['image1'];?>" class="w-100 mb-3" style="height: 360px;"></div>
-               <div class="col-md-6 pl-1"><img src="../backend/resource/uploads/<?php echo $item['image1'];?>" class="w-100 mb-3" style="height: 360px;"></div>
+               <div class="col-md-6 pr-1"><img src="../backend/resource/uploads/<?php echo $item['image1'];?>" class="w-100 mb-3 shadow-lg bg-white rounded" style="height: 360px;"></div>
+               <div class="col-md-6 pl-1"><img src="../backend/resource/uploads/<?php echo $item['image2'];?>" class="w-100 mb-3 shadow-lg bg-white rounded" style="height: 360px;"></div>
+               <div class="col-md-6 pr-1"><img src="../backend/resource/uploads/<?php echo $item['image3'];?>" class="w-100 mb-3 shadow-lg bg-white rounded" style="height: 360px;"></div>
+               <div class="col-md-6 pl-1"><img src="../backend/resource/uploads/<?php echo $item['image4'];?>" class="w-100 mb-3 shadow-lg bg-white rounded" style="height: 360px;"></div>
            </div>
         </center>
-        <div class="price-order">
-        <p style="text-align: left;">Price : ฿<?php echo $item['price']; ?></p>
-        </div>
+        
+            <div class="container mb-4 mt-5">
+              <hr>
+              <div class="col-md-4 shadow-lg bg-white rounded p-4">
+                <h5 class="text-left">
+                  <b>Color: </b> <?php echo $item['color']; ?> 
+                  <br>
+                  <br>
+                  <img src="../backend/resource/uploads/<?php echo $item['image1'];?>" style="width:70px; height:55px;">
+                </h5>
 
-        <div class="Choose-color">
-            <p style="text-align: left;">Choose Color</p>
-            <table >
-                <tr>
-                    <?php//foreach($shoes_color as $item1){?>
-                    <td style="text-align:left; width: 100px;" ><img src="image/adidas.jpg"  style="width:100%" ></td>
-                    <?php //} ?>
-                </tr>
-            </table>
-        </div>
-            
-        <div class="Choose-size">
-            <p style="text-align: left;">Choose Color</p>
-            <?php //foreach($shoes_size as $item1){ ?>
-            <button class="btn"> <?php// echo $item1['size'];?> </button>  
-            <?php //} ?>
+                <h5 class="text-left">
+                  <b>Size: </b>
+                  <br>
+                  <br>
+                  <div class="alert alert-secondary" style="width:20%;"><?php echo $item['size']; ?></div>
+                </h5>
+                <h5 class="text-left">
+                  <b>Price: </b>
+                  <br>
+                  <br>
+                  <?php echo $item['price']; ?> Baht.
+                </h5>
+              </div>
             </div>
-            <div class="detail-shoes">
-                <center>    
-                    <table border="1" style="width: 70%;">
-                    <tr>
-                        <td style="padding-left: 10px; padding-right: 10px;"><p>Adidas Ultraboost
-                            HIGH-PERFORMANCE SHOES FOR RUNNING IN THE HEAT.
-                            Your run can't wait for cooler weather. It can't wait for the clouds to roll in or the rain to fall or the wind to blow. When the forecast calls for high temperatures as far as the eye can see, these running shoes are your go-to pair. A lightweight and breathable monofilament knit upper has transparent panels like windows open to a breeze. Responsive cushioning rides on a transparent outsole that adds to the icy-cool feel.</p></td>
-                        <td><p  id="image5"><img src="image/adidas.jpg"  style="width:100%"><input type="hidden" id="hid" name="dd" value="./image/adidas.jpg">
-                          
-                        </td>
-                        </tr>
-                        
-                    </table>
-                </center>
+
+            <div class="container mb-4 ">
+              <h3 class="m-5">Product Description</h3>
+              <div class="shadow-lg bg-white rounded p-5">
+                <p class="text-left"><?php echo $item['star']; ?></p>
+              </div>
+            </div>
             
-                </div>
-                
+
+        </div>
+             <center>
                 <div>
                   <form method="get" action="shoppingcart.php">
                       <input type="hidden" value="<?php echo $item['shoes_id']; ?>" name="product">
                       <input type="submit" class="addcart" value="Add to Shopping Cart">
                   </form>
                 </div>
+             </center>
+
 
                 
 

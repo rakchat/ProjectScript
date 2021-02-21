@@ -15,6 +15,7 @@
    $size = $_POST['size'];
    $amount = $_POST['amount'];
    $price = $_POST['price'];
+   $desciption = $_POST['desciption'];
    $image1 = "";
    $image2 = "";
    $image3 = "";
@@ -100,7 +101,7 @@
       }
    }
 
-   $query = $db->updateEleventColumn($con, 'shoes', 'brand_id', 'model', 'color', 'size', 'amount', 'price', 'star', 'image1', 'image2', 'image3', 'image4', $brand_id, $model, $color, $size, $amount, $price, '0', $image1, $image2, $image3, $image4, 'shoes_id', $shoes_id);
+   $query = $db->updateEleventColumn($con, 'shoes', 'brand_id', 'model', 'color', 'size', 'amount', 'price', 'star', 'image1', 'image2', 'image3', 'image4', $brand_id, $model, $color, $size, $amount, $price, $desciption, $image1, $image2, $image3, $image4, 'shoes_id', $shoes_id);
 
    if($query){
     
@@ -224,7 +225,7 @@
     $value4 = $_POST['size'];
     $value5 = $_POST['amount'];
     $value6 = $_POST['price'];
-    $value7 = 0;
+    $value7 = $_POST['desciption'];
     $value8 = $basename1;
     $value9 = $basename2;
     $value10 = $basename3;

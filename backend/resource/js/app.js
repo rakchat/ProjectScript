@@ -110,7 +110,6 @@ $(document).on('click', '.btn_order_show_orders_details', function(){
             $('#box_view_orders_order_details').html(data);
         }
     })
-
 })
 
 //  orders show user details
@@ -234,6 +233,7 @@ $(document).on('click', '.btn_order_show_update_status_order', function(){
                 $('#set_data_amount').val(data.amount);
                 $('#set_data_price_shoes').val(data.price);
                 $('#set_update_shoes_id').val(data.shoes_id)
+                $('#set_description').val(data.star)
                 $('#set_value_shoes_image1').val(data.image1)
                 $('#set_value_shoes_image2').val(data.image2)
                 $('#set_value_shoes_image3').val(data.image3)
@@ -303,6 +303,7 @@ $(document).on('click', '.btn_order_show_update_status_order', function(){
                 $('#show_shoes_size').html(data.size)
                 $('#show_shoes_amount').html(data.amount)
                 $('#show_shoes_price').html(data.price)
+                $('#show_shoes_description').html(data.star)
                 $('#show_shoes_image1').attr('src', '../resource/uploads/' + data.image1)
                 $('#show_shoes_image2').attr('src', '../resource/uploads/' + data.image2)
                 $('#show_shoes_image3').attr('src', '../resource/uploads/' + data.image3)
