@@ -1,11 +1,12 @@
 <?php
-  
+  session_start();
+  include('../connection.php');
   if(isset($_POST['email'])){
     $email = $_POST['email'];
     $password = md5($_POST['password']);
     $page = $_POST['id_page'];
 
-    $query = "SELECT * FROM users WHERE email = '$username' AND password = '$passwordenc'";
+    $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
 
     $result = mysqli_query($conn, $query);
 
