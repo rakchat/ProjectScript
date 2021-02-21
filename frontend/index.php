@@ -112,17 +112,18 @@
         </center>
     </div>
 
-     
+     <!-- ค้นหาด้วยโลโก -->
     <div class="container">
       <div class="row">
         <?php 
          $queryBrand=$db->selectAll($con,'brand_shoes');
          foreach($queryBrand as $item){
         ?>
-        <div class="col-md-2 shadow-lg p-3 mb-5 bg-white rounded btn_seach_form_brand" id="<?php echo $item['brand_id']; ?>"><img src="../backend/resource/uploads/<?php echo $item['logo']; ?>" class="w-100" style="height:100px;"></div>
+        <div class="col-md-1 btn shadow-lg p-3 mb-3 bg-white rounded btn_seach_form_brand" id="<?php echo $item['brand_id']; ?>"><img src="../backend/resource/uploads/<?php echo $item['logo']; ?>" class="w-100" style="height:50px;"></div>
         <?php } ?>
       </div>
     </div>
+    <!--  -->
 
      <div class="container-fluid">
        <div class="row" id="box_view_all_product">

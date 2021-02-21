@@ -21,7 +21,10 @@
    $item = mysqli_fetch_array($shoes_all);
 //  $shoes_color = $db->query($con, "SELECT DISTINCT shoes.color FROM shoes INNER JOIN brand_shoes ON shoes.brand_id = brand_shoes.brand_id WHERE shoes.model = '$model' AND brand_shoes.brand_name = '$brand_name' ");
 //   $shoes_size = $db->query($con, "SELECT DISTINCT shoes.size FROM shoes INNER JOIN brand_shoes ON shoes.brand_id = brand_shoes.brand_id WHERE shoes.model = '$model' AND brand_shoes.brand_name = '$brand_name' ")
-
+$banner = $db->selectAll($con,'banner'); 
+$active_banner = true;
+$numUp = 0;
+$active_banner2 = true;
 
 ?>
 <!DOCTYPE html>
@@ -90,30 +93,47 @@
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
-              <li data-target="#demo" data-slide-to="0" class="active"></li>
-              <li data-target="#demo" data-slide-to="1"></li>
-              <li data-target="#demo" data-slide-to="2"></li>
-              <li data-target="#demo" data-slide-to="3"></li>
-              <li data-target="#demo" data-slide-to="4"></li>
+              <?php 
+               foreach($banner as $item2){
+              ?>
+
+                <?php 
+                 if($active_banner == true){
+                   ?>
+                   <li data-target="#demo" data-slide-to="<?php echo $numUp; ?>" class="active"></li>
+                <?php
+                    $active_banner = false;
+                 }else{
+                     ?>
+                    <li data-target="#demo" data-slide-to="<?php echo $numUp; ?>"></li>
+              <?php
+                 }
+               $numUp++;
+               }
+              ?>
             </ul>
             
             <!-- The slideshow -->
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="image/banner.jpg" alt="Los Angeles" width="1100" height="500">
-              </div>
-              <div class="carousel-item">
-                <img src="image/banner2.jpg" alt="Chicago" width="1100" height="500">
-              </div>
-              <div class="carousel-item">
-                <img src="image/banner3.jpg" alt="New York" width="1100" height="500">
-              </div>
-              <div class="carousel-item">
-                <img src="image/banner4.jpg" alt="New York" width="1100" height="500">
-              </div>
-              <div class="carousel-item">
-                <img src="image/banner5.jpg" alt="New York" width="1100" height="500">
-              </div>
+              <?php foreach($banner as $item2){ ?>
+
+
+                <?php if($active_banner2 == true){ ?>
+                  <div class="carousel-item active">
+                    <img src="../backend/resource/uploads/<?php echo $item2['image']; ?>" alt="Los Angeles" width="1100" height="500">
+                  </div>
+                <?php
+                    $active_banner2 = false; 
+                    }else{ 
+                ?>
+                 <div class="carousel-item ">
+                   <img src="../backend/resource/uploads/<?php echo $item2['image']; ?>"alt="Chicago" width="1100" height="500">
+                 </div>
+              <?php
+                }
+              } 
+             ?>
+
             </div>
             
             <!-- Left and right controls -->
@@ -151,13 +171,13 @@
                   <b>Size: </b>
                   <br>
                   <br>
-                  <div class="alert alert-secondary" style="width:20%;"><?php echo $item['size']; ?></div>
+                  <button class="btn btn-secondary"><?php echo $item['size']; ?></button>
                 </h5>
                 <h5 class="text-left">
                   <b>Price: </b>
                   <br>
                   <br>
-                  <?php echo $item['price']; ?> Baht.
+                  ฿<?php echo $item['price']; ?> Baht.
                 </h5>
               </div>
             </div>
@@ -179,15 +199,9 @@
                   </form>
                 </div>
              </center>
-
-
-                
-
-
-
     </div>
     
-    </body>
+    
     <div class="footer">
       <div class="container"> 
         <div class="row">

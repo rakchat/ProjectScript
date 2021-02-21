@@ -92,7 +92,6 @@
       <td><?php echo $item['order_status'];?></td>
       <td>
         <button class="btn btn-info btn_order_show_orders_details" data-toggle="modal" data-target="#order_modal_order_details" id="<?php echo $item['orders_id']; ?>">รายละเอียดสั่งซื้อ</button>
-        <button class="btn btn-danger">ยกเลิก</button>
       </td>
     </tr>
     <?php
