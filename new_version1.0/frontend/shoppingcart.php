@@ -2,8 +2,8 @@
 
   session_start();
 
-  if( $_SESSION['check']  == true && isset($_GET['product'])){
-    $_SESSION['porduct'][] = $_GET['product'];
+  if( $_SESSION['check']  == true && isset($_POST['product'])){
+    $_SESSION['porduct'][] = $_POST['product'];
     $_SESSION['check']  = false;
   }
   
@@ -11,7 +11,7 @@
   include('../backend/config/mysql.php');
   $db = new db();
   $con = $db->connectDB();
-  $no = 0;
+  $no = 0; 
 
 ?>
 
@@ -26,10 +26,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css\cartstyles.css" />
-</head>
+  </head>
       <header class="header-top"> 
       <!--ชื่อร้านขายรองเท้า-->
   </header>
+
   <div class="menu-bar">
     <a href="login-frontend/form_login.php">Login</a> 
     <a href="login-frontend/register.php">Register</a> 
@@ -101,8 +102,6 @@
       <center><input type="submit" class="bubbly-button" value="Add To Orders" onclick="calTotalPrice();"></center>
 
 </form>
-
-<script src="./js/shoppingcart.js"></script>
     <div class="cartfooter">
         <div class="container"> 
             <div class="row">
@@ -121,7 +120,8 @@
                   Facebook: Sixshoes<br>
                   Development by Sixshoes@2021<br>
                   <br>
-                </div>
+          </div>
   </div>
+  <script src="./js/shoppingcart.js"></script>
 </body>
 </html>

@@ -42,52 +42,43 @@ $active_banner2 = true;
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css\styles.css" />
-    <script type="text/javascript">
-    function changeImg(imgID){
-      if(imgID == 1) {
-            document.getElementById("image1").innerHTML='<img src="./image/adidas.jpg" style="width:100%">';
-            document.getElementById("image2").innerHTML='<img src="./image/Ultraboost_21_FY0377_05_standard.jpg" style="width:100%">';
-            document.getElementById("image3").innerHTML='<img src="./image/Ultraboost_21_FY0377_06_standard.jpg" style="width:100%">';
-            document.getElementById("image4").innerHTML='<img src="./image/Ultraboost_21_FY0377_41_detail.jpg" style="width:100%">';
-            document.getElementById("image5").innerHTML='<img src="./image/adidas.jpg" style="width:100%">';
-            document.getElementById("hid").value="./image/adidas.jpg";
-            }else if(imgID == 2) {
-            document.getElementById("image1").innerHTML='<img src="./image/black1.jpg" style="width:100%">';
-            document.getElementById("image2").innerHTML='<img src="./image/black2.jpg" style="width:100%">';
-            document.getElementById("image3").innerHTML='<img src="./image/black3.jpg" style="width:100%">';
-            document.getElementById("image4").innerHTML='<img src="./image/black4.jpg" style="width:100%">';
-            document.getElementById("image5").innerHTML='<img src="./image/black1.jpg" style="width:100%">';
-            document.getElementById("hid").value="./image/adidas.jpg";
-            }else if(imgID == 3) {
-            document.getElementById("image1").innerHTML='<img src="./image/red1.jpg" style="width:100%">';
-            document.getElementById("image2").innerHTML='<img src="./image/red2.jpg" style="width:100%">';
-            document.getElementById("image3").innerHTML='<img src="./image/red3.jpg" style="width:100%">';
-            document.getElementById("image4").innerHTML='<img src="./image/red4.jpg" style="width:100%">';
-            document.getElementById("image5").innerHTML='<img src="./image/red1.jpg" style="width:100%">';
-            document.getElementById("hid").value="./image/adidas.jpg";
-            }
-    }
-      </script>
 </head>
+<body>
       <header class="header-top"> 
       <!--ชื่อร้านขายรองเท้า-->
   </header>
-  <div class="menu-bar">
 
-    <a href="login-frontend/form_login.php">Login</a> 
-    <a href="login-frontend/register.php">Register</a> 
-    <a href="Contact.html"> Contact </a> 
-    <div class="dropdown">
-      Brand
-      <div class="dropdown-content">
-          <a href="#">Adidas</a><br>
-          <a href="#">Nike</a><br>
-          <a href="#">Vans</a><br>
-          <a href="#">Converse</a><br>
+  <?php
+    if (isset($_SESSION['userid'])) {
+  ?>
+  <div class="menu-bar">
+      <a href="logout.php" class="text-danger">Logout</a>
+      <a href="#">|</a> 
+      <div class="background">
+        <a href="#"><?php echo $_SESSION['user']; ?></a> 
+        <a href="#"> <img src= "photos/<?php echo $_SESSION['photo']; ?>" width="50" height="40" style="border-radius: 10px;" ></a> 
       </div>
+      <a href="#">|</a> 
+      <a href="contact.php"> Contact </a> 
+      <a href="#">|</a>
+      <a href="index.php">Home</a> 
   </div>
-</div>
-<body>
+  <?php
+  } else {
+  ?>
+  <div class="menu-bar">
+    <a href="form_login.php">Login</a> 
+    <a href="#">|</a> 
+    <a href="register.php">Register</a> 
+    <a href="#">|</a> 
+    <a href="contact-non-login.php"> Contact </a> 
+    <a href="#">|</a> 
+    <a href="index-non-login.php"> Home </a> 
+  </div>
+  <?php
+  }
+  ?>
+
     <div class="header">
         <div id="demo" class="carousel slide" data-ride="carousel">
 
@@ -146,6 +137,8 @@ $active_banner2 = true;
           </div>
     </div>
 
+    <input type="hidden" value="<?php echo $id;?>" id="send_id_page">
+
     <div class="content">
        <h2 class="mb-5"><?php echo $item['brand_name']. " " . $item['model']; ?></h2>
        <center>
@@ -188,18 +181,62 @@ $active_banner2 = true;
                 <p class="text-left"><?php echo $item['star']; ?></p>
               </div>
             </div>
-            
+
+            <form id="add_shoes_to_cart" method="POST" action="shoppingcart.php">
+                <input type="hidden" value="<?php echo $item['shoes_id']; ?>" name="product">
+             </form>
 
         </div>
              <center>
                 <div>
-                  <form method="get" action="shoppingcart.php">
-                      <input type="hidden" value="<?php echo $item['shoes_id']; ?>" name="product">
-                      <input type="submit" class="addcart" value="Add to Shopping Cart">
-                  </form>
+                  <button class="addcart" id="btn_check_user">Add to Shopping Cart</button>
                 </div>
              </center>
     </div>
+    
+    <?php
+      if(isset($_SESSION['userid'])){
+    ?>
+      <input type="hidden" id="value_user_id" value="1">
+    <?php
+      }else{
+        ?>
+       <input type="hidden" id="value_user_id" value="0">
+    <?php
+      }
+    ?>
+
+    <div class="modal fade" id="modal_login">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">Login</div>
+          <div class="modal-body">
+            <div>
+              <form action="config/login.php" method="POST">
+                  <input type="hidden" id="set_id_page" name="id_page">
+                <div class="col-12">
+                  <input type="text" name="email" placeholder="Email" class="form-control">
+                </div>
+                <br>
+                <div class="col-12">
+                  <input type="password" name="password" placeholder="Password" class="form-control">
+                </div>
+                <br>
+                <div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+          <button class="btn bg-danger text-white" data-dismiss="modal">Cancel</button>
+            <button class="btn bg-info text-white">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    
     
     
     <div class="footer">
@@ -232,6 +269,6 @@ $active_banner2 = true;
     <!-- Feature 1.ตะกร้าสินค้า 2.Filter กรอง เรียง ราคา, สินค้ายอดนิยม, ดาว -->
 
     <!-- Update 20/1/2564 -->
-
+ <script src="./js/detailorder.js"></script>
 </body>
 </html>
