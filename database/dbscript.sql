@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2021 at 09:48 AM
+-- Generation Time: Feb 21, 2021 at 10:03 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -37,11 +37,11 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`banner_id`, `image`) VALUES
-(1, '602f67c27fc6a-1613719490.jpg'),
-(2, '602f68af94bf6-1613719727.jpg'),
-(3, '602f67d650cbe-1613719510.jpg'),
-(4, '602f63e6c0d46-1613718502.png'),
-(5, '602f684c256ac-1613719628.jpg');
+(1, '60321c212cad8-1613896737.jpg'),
+(2, '6032033a0c842-1613890362.jpg'),
+(3, '6032035351b2a-1613890387.jpg'),
+(4, '6032035a315d1-1613890394.jpg'),
+(5, '60320ab062ae5-1613892272.jpg');
 
 -- --------------------------------------------------------
 
@@ -60,9 +60,12 @@ CREATE TABLE `brand_shoes` (
 --
 
 INSERT INTO `brand_shoes` (`brand_id`, `brand_name`, `logo`) VALUES
-(59, 'Nike', '602f297681e0c-1613703542.jpg'),
-(60, 'Adidas', '602e1db6e8845-1613634998.jpg'),
-(61, 'NewBalance', '602e1dc4d0fe9-1613635012.jpg');
+(59, 'Nike', '60310ce335999-1613827299.png'),
+(60, 'Adidas', '603205ff2643f-1613891071.png'),
+(61, 'Vans', '60310d209e5de-1613827360.jpg'),
+(62, 'Puma', '60310d334b375-1613827379.png'),
+(63, 'NewBalance', '60310d53c6bbb-1613827411.png'),
+(64, 'Reebok', '60310d5fbd6f7-1613827423.png');
 
 -- --------------------------------------------------------
 
@@ -83,7 +86,19 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`orders_id`, `user_id`, `date`, `order_total_price`, `order_status`) VALUES
-(1, 1, '2021-02-01', '3500', 'ได้รับสินค้าเรียบร้อย');
+(1, 1, '2021-02-23', '3500', 'กำลังจัดส่ง'),
+(2, 1, '2021-02-19', '4000', 'ยังไม่ได้จัดส่ง'),
+(3, 1, '2021-02-19', '4000', 'ยังไม่ได้จัดส่ง'),
+(4, 1, '2021-02-20', '4000', 'ยังไม่ได้จัดส่ง'),
+(5, 1, '2021-02-20', '4000', 'ยังไม่ได้จัดส่ง'),
+(6, 1, '2021-02-20', '4000', 'ยังไม่ได้จัดส่ง'),
+(7, 1, '2021-02-20', '4000', 'ยังไม่ได้จัดส่ง'),
+(8, 1, '2021-02-20', '0', 'ยังไม่ได้จัดส่ง'),
+(9, 1, '2021-02-20', '250', 'ยังไม่ได้จัดส่ง'),
+(10, 1, '2021-02-20', '4000', 'ยังไม่ได้จัดส่ง'),
+(11, 1, '2021-02-20', '4000', 'ยังไม่ได้จัดส่ง'),
+(12, 1, '2021-02-20', '4000', 'ยังไม่ได้จัดส่ง'),
+(13, 1, '2021-02-20', '5200', 'ได้รับสินค้าเรียบร้อย');
 
 -- --------------------------------------------------------
 
@@ -99,7 +114,7 @@ CREATE TABLE `shoes` (
   `size` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `amount` int(11) NOT NULL,
   `price` decimal(10,0) NOT NULL,
-  `star` int(11) NOT NULL,
+  `star` longtext COLLATE utf8_unicode_ci NOT NULL,
   `image1` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `image2` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `image3` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
@@ -111,10 +126,17 @@ CREATE TABLE `shoes` (
 --
 
 INSERT INTO `shoes` (`shoes_id`, `brand_id`, `model`, `color`, `size`, `amount`, `price`, `star`, `image1`, `image2`, `image3`, `image4`) VALUES
-(81, 59, 'A4', 'white', '40', 3, '250', 0, '602d2e428fd04-1613573698.jpg', '602d2e428fd0f-1613573698.jpg', '602d2e428fd11-1613573698.jpg', '602d2e428fd13-1613573698.jpg'),
-(82, 60, 'Mp-35', 'black', '40', 50, '4000', 0, '602e1df77859e-1613635063.jpg', '602e1df7785a8-1613635063.jpg', '602e1df7785aa-1613635063.jpg', '602e1df7785ac-1613635063.jpg'),
-(83, 61, 'N23', 'red', '35', 4, '1200', 0, '602e1e2b4d95f-1613635115.jpg', '602e1e2b4d998-1613635115.jpg', '602e1e2b4d99f-1613635115.png', '602e1e2b4d9a3-1613635115.jpg'),
-(84, 59, 'K2', 'white', '34', 4, '159', 0, '602f2da426598-1613704612.jpg', '602f2da4265a5-1613704612.jpg', '602f2da4265a8-1613704612.jpg', '602f2da4265ab-1613704612.jpg');
+(81, 59, 'A4', 'white', '40', 3, '250', 'Hello World', '602d2e428fd04-1613573698.jpg', '602d2e428fd0f-1613573698.jpg', '602d2e428fd11-1613573698.jpg', '602d2e428fd13-1613573698.jpg'),
+(82, 60, 'Mp-35', 'black', '40', 50, '4000', '0', '602e1df77859e-1613635063.jpg', '602e1df7785a8-1613635063.jpg', '602e1df7785aa-1613635063.jpg', '602e1df7785ac-1613635063.jpg'),
+(83, 61, 'N23', 'red', '35', 4, '1200', '0', '602e1e2b4d95f-1613635115.jpg', '602e1e2b4d998-1613635115.jpg', '602e1e2b4d99f-1613635115.png', '602e1e2b4d9a3-1613635115.jpg'),
+(84, 59, 'K2', 'white', '34', 4, '159', '0', '602f2da426598-1613704612.jpg', '602f2da4265a5-1613704612.jpg', '602f2da4265a8-1613704612.jpg', '602f2da4265ab-1613704612.jpg'),
+(85, 59, '1', '1', '30', 1, '200', '0', '', '', '', ''),
+(86, 59, '1', '1', '30', 1, '200', '0', '', '', '', ''),
+(87, 59, '1', '2', '3', 5, '6', '0', '', '', '', ''),
+(88, 59, '1', '30', '30', 2, '1900', '0', '', '', '', ''),
+(89, 62, 'MM', 'black', '39', 4, '2000', '', '60320121e26cd-1613889825.jpg', '60320121e28b9-1613889825.jpg', '60320121e28be-1613889825.jpg', '60320121e28c0-1613889825.jpg'),
+(90, 64, 'KL', 'white', '28', 5, '1500', '', '603201e766283-1613890023.jpg', '603201e76628d-1613890023.jpg', '603201e766291-1613890023.jpg', '603201e766293-1613890023.jpg'),
+(92, 60, 'OL', 'green', '39', 9, '1200', 'this is a good shoe', '6032043a4366f-1613890618.', '6032043a43675-1613890618.', '6032043a43677-1613890618.', '6032043a43678-1613890618.');
 
 -- --------------------------------------------------------
 
@@ -136,7 +158,27 @@ CREATE TABLE `shopping_cart` (
 
 INSERT INTO `shopping_cart` (`cart_id`, `order_id`, `shoes_id`, `amount`, `total_price`) VALUES
 (1, 1, 81, 2, '3000'),
-(2, 1, 83, 1, '500');
+(2, 1, 83, 1, '500'),
+(3, 5, 83, 2, '1'),
+(4, 6, 84, 1, '159'),
+(5, 6, 81, 1, '250'),
+(6, 6, 84, 1, '159'),
+(7, 6, 85, 1, '200'),
+(8, 6, 88, 1, '1900'),
+(9, 6, 88, 1, '1900'),
+(10, 7, 84, 1, '159'),
+(11, 7, 81, 1, '250'),
+(12, 7, 84, 1, '159'),
+(13, 7, 85, 1, '200'),
+(14, 7, 88, 1, '1900'),
+(15, 7, 88, 1, '1900'),
+(16, 8, 81, 2, '500'),
+(17, 9, 81, 1, '250'),
+(18, 10, 82, 1, '4000'),
+(19, 11, 82, 1, '4000'),
+(20, 12, 82, 1, '4000'),
+(21, 13, 83, 1, '1200'),
+(22, 13, 82, 1, '4000');
 
 -- --------------------------------------------------------
 
@@ -222,25 +264,25 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT for table `brand_shoes`
 --
 ALTER TABLE `brand_shoes`
-  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `orders_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `shoes`
 --
 ALTER TABLE `shoes`
-  MODIFY `shoes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `shoes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `shopping_cart`
 --
 ALTER TABLE `shopping_cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `users`
