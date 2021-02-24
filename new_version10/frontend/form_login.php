@@ -21,7 +21,6 @@
     <?php include('./navbar.php');?>
   </div>
 
-
     <div class="loginall">
         <div class="background_login">
             <img src="img/asd.jpg" id="back1">

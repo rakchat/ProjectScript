@@ -32,4 +32,9 @@ $(document).ready(function(){
             }
         })
     })
+
+    $('#btn_register').click(function(){
+        window.location.href='register.php';
+    });
+
 })

@@ -210,7 +210,8 @@ $active_banner2 = true;
           </div>
           <div class="modal-footer">
           <button class="btn bg-danger text-white" data-dismiss="modal">Cancel</button>
-            <button class="btn bg-info text-white" id="btn_login">Login</button>
+            <button class="btn bg-primary text-white" id="btn_register">Register</button>
+            <button class="btn bg-success text-white" id="btn_login">Login</button>
           </div>
         </div>
       </div>
