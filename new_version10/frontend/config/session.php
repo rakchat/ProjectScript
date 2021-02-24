@@ -50,7 +50,7 @@
                     $ouput .= "<input type=\"number\" id=\"number\" class=\"amount\" value=\"1\" min=\"1\" onchange=\"calTotalPrice()\" max=\"".$pro_item['amount']."\" name=\"amount\"/>";
                     $ouput .= "<input type=\"hidden\" name=\"get_amount[]\" class=\"set_amount\">";
                     $ouput .= "</td>";
-                    $ouput .= "<td><a href=\"javascript:void(0)\" id=\"". $no."\" class=\"btn btn-danger btn_delete_session\">X</a><input type=\"hidden\" value=\"".$_SESSION['userid']."\" id=\"set_user_id\"></td>";
+                    $ouput .= "<td><a href=\"javascript:void(0)\" id=\"". $key2."\" class=\"btn btn-danger btn_delete_session\">X</a><input type=\"hidden\" value=\"".$_SESSION['userid']."\" id=\"set_user_id\"></td>";
                     $ouput .= "</tr>";
                     $no++;
                 }
